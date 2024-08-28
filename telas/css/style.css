@@ -1,0 +1,156 @@
+:root
+{
+    font-family: 'Times New Roman', Times, serif;
+}
+
+body{
+    background-color: #252525 !important;
+    color: white !important;
+    scale: 0.9;
+}
+
+main{
+    margin: 25px;
+}
+
+header{
+    display: flex;
+    flex-direction: column;
+}
+
+header .logo{
+    display: flex !important;
+}
+
+header button
+{
+    margin-top: 0%;
+    margin-bottom: 30px;
+    display: flex;
+    right: 90% !important;
+}
+
+main h1
+{
+    text-align: center;
+    margin-bottom: 10%;
+}
+
+main a{
+    padding-left: 50% ;
+}
+
+@media (max-width: 360px){
+
+    .logo{
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+    }
+}
+
+@media (min-width: 720px){
+
+    .logo{
+        width: 400px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+@media (min-width: 1200px){
+
+    .logo{
+        width: 400px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+
+.logo img{
+    width: 30%;
+    border-radius: 100%;
+}
+
+form button{
+    margin-top: 5%;
+    width: 100%;
+    border-radius: 15px !important;
+    transition: 0.3ms;
+    border: none !important;
+    background-color: rgb(14, 56, 170) !important;
+}
+
+input
+{
+    background-color: #8d898985 !important;
+    border: none !important;
+}
+::placeholder
+{
+    color: rgba(255, 255, 255, 0.486) !important;
+}
+
+button:hover{
+    background-color: rgb(22, 22, 153) !important;
+}
+
+.criarConta {
+    display: flex;
+    align-items: center; 
+    font-size: 13px;
+    margin-top: 5%;
+}
+
+.criarConta p {
+    margin: 0; /
+}
+
+.forgotPassword {
+   
+    margin-left: 50%;
+}
+
+.button
+{
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.507);
+}
+
+.termosUso
+{
+    font-size: 12px;
+}
+
+button
+{
+    border-radius: 15px !important;
+    transition: 0.3ms;
+    border: none !important;
+    background-color: rgb(14, 56, 170) !important;
+}
+
+.code-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.code-input {
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    font-size: 24px;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.code-input:focus {
+    border-color: #007bff;
+}

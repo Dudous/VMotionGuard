@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="PT-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <title>Login</title>
+</head>
+<body>
+    <h1>LOGIN</h1>
+   
+    <section class="login">
+        <form class="formLogin"> 
+            <div class="userInput">
+                <label for="user">E-mail ou CPF</label>
+                 <input type="text" id="user" name="user" placeholder="Digite seu CPF" required>
+            </div>  
+            <div class="userPassword">
+                 <label for="senha">Senha</label>
+                <input type="password" id="senha" name="senha" placeholder="Digite sua senha" required>
+            </div> 
+            <button type="submit" id="entrar">ENTRAR</button>
+        </form>
+    </section>
+
+    <section class="redirecionamento">
+        <a target="_blank" id="linkCadastro" href="pageCadastro.html">Não tem uma conta? Criar conta</a>
+    </section>
+
+    <script src="assets/getLogin.js"></script>
+
+</body>
+</html>
