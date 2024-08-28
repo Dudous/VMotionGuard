@@ -1,4 +1,4 @@
-const loc = require('../models/loc')
+const coordinates = require('../models/coordinates')
 
 
 module.exports = {
@@ -9,15 +9,12 @@ module.exports = {
     
     async pagInicialPost(req, res){
 
-        const dados = req.body;
+        const latitude = req.params.latitude;
+        const longitude = req.params.longitude;
 
-        // Criando sala no banco de dados
-        await loc.create({
-        CordX: dados.cordX,
-        CordY: dados.cordY
+        await coordinates.create({
+        Latitude: latitude,
+        Longitude: longitude
         });
-
-        // Redirecionar para a página principal
-        res.redirect('/');
     }
 }

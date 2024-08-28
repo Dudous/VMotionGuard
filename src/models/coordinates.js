@@ -3,22 +3,22 @@ const Sequelize = require('sequelize');
 const database = require('../config/db');
 
 // Criando a tabela Sala
-const loc = database.define('Loc', {
+const coordinates = database.define('Coordinates', {
     IDLoc: {
         type: Sequelize.INTEGER,
         autoIncrement: true,
         allowNull: false,
         primaryKey: true
     },
-    CordX: {
+    Latitude: {
         type: Sequelize.FLOAT,
         allowNull: false
     },
-    CordY: {
+    Longitude: {
         type: Sequelize.FLOAT,
         allowNull: false
     }
 });
 
 // Exportando essa tabela
-module.exports = loc;
+module.exports = coordinates;

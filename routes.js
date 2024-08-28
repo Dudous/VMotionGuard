@@ -4,7 +4,9 @@ const route = express.Router();
 
 const home = require('./src/controllers/home');
 
+
+
 route.get('/', home.pagInicialGet);
-route.post('/', home.pagInicialPost);
+route.post('/:latitude/:longitude', home.pagInicialPost);
 
 module.exports = route;
