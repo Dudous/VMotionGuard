@@ -1,0 +1,166 @@
+:root{
+    color: white;
+    font-family: "Roboto", sans-serif;
+    font-weight: 100;
+    font-style: normal;;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+h1{
+    padding: 5%;
+    display: flex;
+    justify-content: center;
+}
+
+p{
+    padding-left: 20px;
+}
+
+body{
+    background-color: #242222;
+}
+/* .container{
+    border-radius: 10px;
+    display: flex;
+    /* justify-content: center; alinha a letra
+    align-items: center;
+    width: 80vw;
+    background-color: rgb(29, 28, 28);
+    padding: 1%;
+    margin: 10px;
+    color: rgba(255, 255, 255, 0.5);
+} */
+
+
+
+
+input{
+    border: none;
+    border-radius: 10px;
+    display: flex;
+    /* justify-content: center; alinha a letra*/ 
+    align-items: center;
+    width: 80vw;
+    height: 30px;
+    background-color: rgb(29, 28, 28);
+    padding: 1%;
+    margin: 10px;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+
+/* alinha a checkbox e a label */
+.checkbox-container {
+    display: flex;
+    align-items: center;
+    
+}
+
+.checkbox-container input[type="checkbox"] {
+    width: 15px; /* Ajusta o tamanho da checkbox */
+}
+
+.checkbox-container label {
+    font-size: 14px; /* Ajusta o tamanho do texto */
+}
+
+:placeholder-shown{
+    padding-left: 18px;
+}
+
+button.disabled {
+    background-color: gray;
+    cursor: not-allowed;
+}
+
+button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #0d1a8b; /* Cor inicial do botão */
+    color: white;
+    padding: 15px 52px; /* deixa largo */
+    text-align: center;
+    font-size: 16px;
+    margin: 40px 2px;
+    cursor: pointer; /* muda o cursor */
+    border: none; /* tira a borda automática */
+    border-radius: 50px;
+    transition: background-color 0.3s;
+}
+button:hover{
+    background-color: #07126e;
+}
+
+button:disabled:hover{
+    background-color: #151516;
+}
+  
+.button {
+    display: flex;
+    justify-content: center; 
+    align-items: center;                
+    margin: 0;              
+}
+
+.redirecionamento{
+    
+    font-family: sans-serif;
+    display: flex;
+    justify-content: center;
+    width: 45%;
+    padding: 20px;
+    margin: auto;
+    flex: 1; /* Distribui igualmente o espaço entre os itens */
+    text-align: center;
+}
+
+a {
+    color: rgb(48, 48, 201); /* Faz com que a cor do link herde a cor do texto do pai */
+    text-decoration: none; /* Remove o sublinhado dos links */
+    transition: color 0.3s;
+}
+
+a:hover{
+    color: rgb(173, 168, 168);
+}
+
+#legenda{
+    font-size: 80%;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.formLogin {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    p{
+        text-align: start;
+    }
+}
+
+
+/* .button {
+background-color: #4CAF50; /* Cor inicial do botão */
+/* color: white;
+padding: 15px 32px;
+text-align: center;
+text-decoration: none;
+display: inline-block;
+font-size: 16px;
+margin: 4px 2px;
+cursor: pointer;
+border: none;
+border-radius: 4px;
+transition: background-color 0.3s; Suave transição na mudança de cor
+}  */
+
+/*.button:hover {
+background-color: #45a049; /* Cor do botão quando o mouse está sobre ele 
+} */
