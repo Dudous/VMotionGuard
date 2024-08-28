@@ -11,11 +11,11 @@ const coordinates = database.define('Coordinates', {
         primaryKey: true
     },
     Latitude: {
-        type: Sequelize.FLOAT,
+        type: Sequelize.STRING,
         allowNull: false
     },
     Longitude: {
-        type: Sequelize.FLOAT,
+        type: Sequelize.STRING,
         allowNull: false
     }
 });
