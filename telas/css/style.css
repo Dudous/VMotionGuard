@@ -11,11 +11,15 @@ body{
 
 main{
     margin: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 header{
     display: flex;
-    flex-direction: column;
+    justify-content: center;
 }
 
 header .logo{
@@ -37,7 +41,7 @@ main h1
 }
 
 main a{
-    padding-left: 50% ;
+    margin-left: 5px ;
 }
 
 @media (max-width: 360px){
@@ -46,6 +50,22 @@ main a{
         display: flex !important;
         justify-content: center !important;
         align-items: center !important;
+    }
+    form {
+        width: 100%;
+    }
+}
+
+@media (min-width: 361px){
+
+    .logo{
+        width: 400px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    form {
+        width: 100%;
     }
 }
 
@@ -57,6 +77,9 @@ main a{
         justify-content: center;
         align-items: center;
     }
+    form {
+        width: 100%;
+    }
 }
 
 @media (min-width: 1200px){
@@ -67,8 +90,15 @@ main a{
         justify-content: center;
         align-items: center;
     }
+    form {
+        width: 50%;
+    }
 }
 
+.logo{
+    display: flex;
+    justify-content: center;
+}
 
 .logo img{
     width: 30%;
@@ -100,6 +130,7 @@ button:hover{
 
 .criarConta {
     display: flex;
+    justify-content: end;
     align-items: center; 
     font-size: 13px;
     margin-top: 5%;

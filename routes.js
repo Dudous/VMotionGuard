@@ -16,4 +16,7 @@ route.delete('/:id', del.vehicle);
 route.get('/', read.vehicle);
 route.put('/:id', update.vehicle);
 
+route.get('/registerCar', read.registerVehicle);
+route.post('/registerCar', create.registerVehicle);
+
 module.exports = route;

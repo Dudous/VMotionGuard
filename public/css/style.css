@@ -3,6 +3,10 @@
     font-family: 'Times New Roman', Times, serif;
 }
 
+form input{
+    color: white !important;
+}
+
 body{
     background-color: #252525 !important;
     color: white !important;

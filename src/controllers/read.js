@@ -9,5 +9,10 @@ module.exports = {
         });
 
         res.render('../views/index', {vehicles});
+    },
+
+    async registerVehicle(req, res){
+
+        res.render('../views/registerCar');
     }
 }

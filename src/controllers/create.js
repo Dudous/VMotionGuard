@@ -17,6 +17,20 @@ module.exports = {
         res.redirect('/');
     },
 
+    async registerVehicle(req, res){
+
+        const data = req.body;
+
+        await vehicle.create({
+        Plate: data.plate,
+        Brand : data.brand,
+        Model: data.model,
+        Year: data.year
+        });
+
+        res.redirect('/');
+    },
+
     async user(req, res){
 
         const data = req.body;
