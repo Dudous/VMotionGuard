@@ -2,6 +2,9 @@
 const Sequelize = require('sequelize');
 const database = require('../config/db');
 
+const users = require('./users');
+const coordinates = require('./coordinates');
+
 // Criando a tabela Sala
 const vehicles = database.define('Vehicle', {
     IDVehicle: {
@@ -26,6 +29,16 @@ const vehicles = database.define('Vehicle', {
         type: Sequelize.INTEGER,
         allowNull: false
     }
+});
+
+vehicles.belongsTo(users, {
+    constraint: true, //Garantir integridade referencial
+    foreignKey: 'IDUser'
+});
+
+vehicles.belongsTo(coordinates, {
+    constraint: true, //Garantir integridade referencial
+    foreignKey: 'IDLoc'
 });
 
 // Exportando essa tabela

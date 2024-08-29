@@ -1,4 +1,5 @@
 const coordinates = require('../models/coordinates')
+const vehicle = require('../models/vehicles')
 
 module.exports = {
     async vehicle(req, res){

@@ -1,7 +1,7 @@
 {
   "name": "vmotionguard",
   "version": "1.0.0",
-  "description": "",
+  "description": "npm init -y",
   "main": "script.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -16,5 +16,6 @@
     "mssql": "^11.0.1",
     "nodemon": "^3.1.4",
     "sequelize": "^6.37.3"
-  }
+  },
+  "devDependencies": {}
 }

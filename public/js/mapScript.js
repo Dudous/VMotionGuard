@@ -39,4 +39,3 @@ const sendData = () => {
 setInterval(() => {
     sendData();
 }, 5000);
-

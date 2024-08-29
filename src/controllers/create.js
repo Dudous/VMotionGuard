@@ -1,4 +1,5 @@
 const vehicle = require('../models/vehicles')
+const user = require('../models/users')
 
 module.exports = {
 
@@ -14,5 +15,21 @@ module.exports = {
         });
 
         res.redirect('/');
+    },
+
+    async user(req, res){
+
+        const data = req.body;
+
+        // implementar criptografia de senhas
+
+
+        await user.create({
+            CPF: data.cpf,
+            Email: data.email,
+            Senha: data.senha
+        });
+
+        res.redirect('/')
     }
 }

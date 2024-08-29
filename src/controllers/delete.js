@@ -1,4 +1,4 @@
-const vehicle = require('../models/vehicle')
+const vehicle = require('../models/vehicles')
 
 module.exports = {
     async vehicle(req, res){
