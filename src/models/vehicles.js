@@ -33,7 +33,8 @@ const vehicles = database.define('Vehicle', {
 
 vehicles.belongsTo(users, {
     constraint: true, //Garantir integridade referencial
-    foreignKey: 'IDUser'
+    foreignKey: 'IDUser',
+    onDelete: 'CASCADE'
 });
 
 vehicles.belongsTo(coordinates, {
