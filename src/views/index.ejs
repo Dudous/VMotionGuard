@@ -15,16 +15,36 @@
 
     <main>
 
+      <% if (msg != '') { %>
+        <script>
+            alert("user já existe, por favor faça login");
+        </script>
+    <% } %>
+
+    <% if (notFound != '') { %>
+      <script>
+          alert("O login não existe, por favor cadastre-se");
+      </script>
+    <% } %>
+
+  
+    <% if (incorrect != '') { %>
+    <script>
+        alert("senha ou user incorretos");
+    </script>
+    <% } %>
+
+
         <h1>LOGIN</h1>
 
-        <form>
+        <form action="/" method="post">
               <div class="mb-3">
-                <label for="userInput" class="form-label">E-mail ou cpf</label>
-                <input type="text" id="userInput" class="form-control" placeholder="Digite seu CPF">
+                <label for="userInput" class="form-label">CPF</label>
+                <input type="text" id="userInput" name="userInput" class="form-control" placeholder="Digite seu CPF">
               </div>
               <div class="mb-3">
                 <label for="senhaInput" class="form-label">Senha</label>
-                <input type="password" id="senhaInput" class="form-control" placeholder="Digite sua senha">
+                <input type="password" id="senhaInput" name="senhaInput" class="form-control" placeholder="Digite sua senha">
               </div>
               <div class="forgotPassword text-end">
                 <a href="">Esqueceu sua senha?</a>

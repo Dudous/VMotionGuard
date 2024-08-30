@@ -9,7 +9,7 @@ const users = database.define('User', {
         primaryKey: true
     },
     CPF: {
-        type: Sequelize.CHAR(15),
+        type: Sequelize.CHAR(11),
         allowNull: false
     },
     Email: {
