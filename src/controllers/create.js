@@ -4,7 +4,6 @@ const user = require('../models/users')
 module.exports = {
 
     async vehicle(req, res){
-
         const data = req.body;
 
         await vehicle.create({
@@ -73,28 +72,15 @@ module.exports = {
 
         const data = req.body;
 
-        const parametro = data.CPF;
+        // implementar criptografia de senhas
 
-        const userExiste = await user.findOne({
-            where: { CPF: parametro },
-            raw: true, 
-            attributes: ['IDUser', 'CPF', 'Email', 'Password', 'IsAdmin']
-        })
-
-        if (userExiste) {
-            //nicolle@email
-            const notFound = '';
-            const incorrect = '';
-            const msg = 'User existe por favor faça login'
-            res.render('../views/index', {msg, notFound, incorrect})}
-        else{
-
-            await user.create({
-                CPF: data.CPF,
-                Email: data.email,
-                Password: data.password
-            });
-        }
+        await user.create({
+            CPF: data.cpf,
+            Name: data.name,
+            Email: data.email,
+            Password: data.password,
+            IsAdmin: 0
+        });
 
         res.redirect('/')
     }

@@ -6,7 +6,12 @@ module.exports = {
         const notFound = ''
         const incorrect = ''
 
-        res.render('../views/index', {msg, notFound, incorrect});
+        const user = {
+        name: 'Sampaio',
+        id: 1,
+        };
+
+        res.render('../views/index',{user});
     },
     
     async attMap(req, res){

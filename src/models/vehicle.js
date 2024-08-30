@@ -1,34 +1,32 @@
+// Importação
 const Sequelize = require('sequelize');
 const database = require('../config/db');
 
-const users = database.define('User', {
-    IDUser: {
+// Criando a tabela Sala
+const vehicles = database.define('Vehicle', {
+    IDVehicle: {
         type: Sequelize.INTEGER,
         autoIncrement: true,
         allowNull: false,
         primaryKey: true
     },
-    CPF: {
-        type: Sequelize.CHAR(11),
+    Plate: {
+        type: Sequelize.CHAR(8),
         allowNull: false
     },
-    Name:{
+    Brand: {
         type: Sequelize.STRING,
         allowNull: false
     },
-    Email: {
+    Model: {
         type: Sequelize.STRING,
         allowNull: false
     },
-    Password: {
-        type: Sequelize.STRING,
+    Year: {
+        type: Sequelize.INTEGER,
         allowNull: false
-    },
-    IsAdmin: {
-        type: Sequelize.BOOLEAN,
-        allowNull: false,
-        defaultValue: 0
     }
 });
 
-module.exports = users;
+// Exportando essa tabela
+module.exports = vehicles;
