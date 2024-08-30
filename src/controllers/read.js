@@ -7,11 +7,13 @@ const { attMap } = require('./map');
 module.exports = {
 
     async home(req, res) {
-        
+
+        const data = req.body
+
         const login = await user.findAll({
             raw: true,
-            attributes: ['IDUser', 'IsAdmin'],
-            where: {CPF : 78945612322}
+            attributes: ['IDUser', 'CPF', 'Email', 'Password', 'IsAdmin'],
+            where: {CPF : data.CPF}
         })
         
         id = login[0].IDUser

@@ -4,7 +4,6 @@ const user = require('../models/users')
 module.exports = {
 
     async vehicle(req, res){
-
         const data = req.body;
 
         await vehicle.create({
@@ -37,11 +36,12 @@ module.exports = {
 
         // implementar criptografia de senhas
 
-
         await user.create({
             CPF: data.cpf,
+            Name: data.name,
             Email: data.email,
-            Password: data.password
+            Password: data.password,
+            IsAdmin: 0
         });
 
         res.redirect('/')

@@ -18,14 +18,14 @@
     <main>
         <h1>LOGIN</h1>
 
-        <form>
+        <form action="/homePage" method="get">
               <div class="mb-3">
                 <label for="userInput" class="form-label">E-mail ou cpf</label>
-                <input type="text" id="userInput" class="form-control" placeholder="Digite seu CPF">
+                <input type="text" id="userInput" class="form-control" placeholder="Digite seu CPF" required>
               </div>
               <div class="mb-3">
                 <label for="senhaInput" class="form-label">Senha</label>
-                <input type="password" id="senhaInput" class="form-control" placeholder="Digite sua senha">
+                <input type="password" id="senhaInput" class="form-control" placeholder="Digite sua senha" required>
               </div>
               <div class="forgotPassword text-end">
                 <a href="">Esqueceu sua senha?</a>
