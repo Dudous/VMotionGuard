@@ -12,6 +12,16 @@ body{
     color: white !important;
     scale: 0.9;
 }
+body.light-mode
+{
+    background-color: white !important;
+    color: black !important;
+}
+
+:placeholder-shown.dark-mode
+{
+    color: black !important;
+}
 
 main{
     margin: 25px;
@@ -52,6 +62,35 @@ main h1
 
 main a{
     margin-left: 5px ;
+}
+.modeCenter
+{
+    position: fixed;
+    top: 0;
+    right: 0;
+    margin: 10px; /* Ajuste a margem conforme necessário */
+    cursor: pointer;
+}
+
+.mode{
+    background-color: rgb(22, 15, 15);
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 3px;
+    border-radius: 100%;
+    
+}
+.mode:hover{
+    opacity: 0.8;
+}
+
+.mode img
+{
+    height: 100%;
+    width:auto;
 }
 
 @media (max-width: 360px){
@@ -132,6 +171,10 @@ input
 ::placeholder
 {
     color: rgba(255, 255, 255, 0.486) !important;
+}
+::placeholder.light-mode
+{
+    color: rgba(0, 0, 0, 0.486) !important;
 }
 
 button:hover{
