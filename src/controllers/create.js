@@ -41,7 +41,7 @@ module.exports = {
         await user.create({
             CPF: data.cpf,
             Email: data.email,
-            Senha: data.senha
+            Password: data.password
         });
 
         res.redirect('/')

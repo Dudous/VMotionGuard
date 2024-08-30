@@ -38,6 +38,12 @@ header button
     right: 90% !important;
 }
 
+header a
+{
+    position: fixed;
+    right: 80%;
+}
+
 main h1
 {
     text-align: center;

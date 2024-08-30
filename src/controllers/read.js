@@ -1,6 +1,11 @@
 const vehicle = require('../models/vehicles')
 
 module.exports = {
+    
+    async registerUser(req, res){
+        res.render('../views/registerUser');
+    },
+    
     async vehicle(req, res){
 
         const vehicles = await vehicle.findAll({
@@ -15,4 +20,5 @@ module.exports = {
 
         res.render('../views/registerCar');
     }
+
 }

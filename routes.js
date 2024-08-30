@@ -9,12 +9,16 @@ const read = require('./src/controllers/read');
 const update = require('./src/controllers/update');
 
 route.get('/', map.map);
-route.post('/:latitude/:longitude', map.attMap);
+route.put('/:latitude/:longitude', map.attMap);
 
-route.post('/', create.vehicle);
-route.delete('/:id', del.vehicle);
-route.get('/', read.vehicle);
-route.put('/:id', update.vehicle);
+route.post('/car', create.vehicle);
+route.delete('/car/:id', del.vehicle);
+route.get('/car', read.vehicle);
+route.patch('/car/:id', update.vehicle);
+
+route.get('/registerUser', read.registerUser);
+
+route.post('/user', create.user);
 
 route.get('/registerCar', read.registerVehicle);
 route.post('/registerCar', create.registerVehicle);

@@ -23,7 +23,7 @@ const sendData = () => {
                 const { latitude, longitude } = position.coords;
                 updateMarker(latitude, longitude);
                 
-                fetch('/' + latitude + '/' + longitude, {method: "POST"});
+                fetch('/' + latitude + '/' + longitude, {method: "PUT"});
             },
             (error) => {
                 console.error('Erro ao obter a localização:', error);
