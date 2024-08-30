@@ -1,7 +1,26 @@
 const { where } = require('sequelize');
-const vehicle = require('../models/vehicles')
+const vehicle = require('../models/vehicles');
+const user = require('../models/users');
+const { raw } = require('express');
+const { attMap } = require('./map');
 
 module.exports = {
+
+    async home(req, res) {
+        
+        const login = await user.findAll({
+            raw: true,
+            attributes: ['IDUser', 'IsAdmin'],
+            where: {CPF : 78945612322}
+        })
+        
+        id = login[0].IDUser
+
+        if(login[0].IsAdmin)
+            res.render('../views/homePageAdmin',{id});
+        else
+            res.render('../views/homePageUser', {id});
+    },
     
     async registerUser(req, res){
         res.render('../views/registerUser');
@@ -27,7 +46,7 @@ module.exports = {
 
         const vehicles = await vehicle.findAll({
             raw: true,
-            attributes: ['IDVehicle', 'Plate', 'Brand', 'Model', 'Year']
+            attributes: ['IDVehicle', 'Plate', 'Brand', 'Model', 'Year', 'IDUser', 'IDLoc']
         });
 
         res.render('../views/adminCars',{vehicles})
