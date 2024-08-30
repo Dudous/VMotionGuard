@@ -3,7 +3,12 @@ const coordinates = require('../models/coordinates')
 module.exports = {
     async map(req, res){
 
-        res.render('../views/index');
+        const user = {
+        name: 'Sampaio',
+        id: 1,
+        };
+
+        res.render('../views/index',{user});
     },
     
     async attMap(req, res){

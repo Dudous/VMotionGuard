@@ -1,3 +1,4 @@
+const { where } = require('sequelize');
 const vehicle = require('../models/vehicles')
 
 module.exports = {
@@ -10,7 +11,8 @@ module.exports = {
 
         const vehicles = await vehicle.findAll({
             raw: true,
-            attributes: ['IDVehicle', 'Plate', 'Brand', 'Model', 'Year']
+            attributes: ['IDVehicle', 'Plate', 'Brand', 'Model', 'Year'],
+            where: {IDUser : req.params.id}
         });
 
         res.render('../views/index', {vehicles});
@@ -19,6 +21,15 @@ module.exports = {
     async registerVehicle(req, res){
 
         res.render('../views/registerCar');
-    }
+    },
 
+    async adminCars(req, res){
+
+        const vehicles = await vehicle.findAll({
+            raw: true,
+            attributes: ['IDVehicle', 'Plate', 'Brand', 'Model', 'Year']
+        });
+
+        res.render('../views/adminCars',{vehicles})
+    }
 }

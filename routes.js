@@ -11,9 +11,9 @@ const update = require('./src/controllers/update');
 route.get('/', map.map);
 route.put('/:latitude/:longitude', map.attMap);
 
-route.post('/car', create.vehicle);
+route.post('/car:id', create.vehicle);
 route.delete('/car/:id', del.vehicle);
-route.get('/car', read.vehicle);
+route.get('/car:id', read.vehicle);
 route.patch('/car/:id', update.vehicle);
 
 route.get('/registerUser', read.registerUser);
@@ -22,5 +22,7 @@ route.post('/user', create.user);
 
 route.get('/registerCar', read.registerVehicle);
 route.post('/registerCar', create.registerVehicle);
+
+route.get('/adminCars', read.adminCars)
 
 module.exports = route;
