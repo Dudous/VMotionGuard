@@ -29,6 +29,7 @@ module.exports = {
 
         res.redirect('/');
     },
+    
     async login(req, res) {
         const data = req.body;
         const parametro = data.userInput;
