@@ -26,6 +26,6 @@ route.post('/registerCar', create.registerVehicle);
 
 route.get('/adminCars', read.adminCars)
 
-route.get('/homePage', read.home)
+route.get('/homePageUser', read.home)
 
 module.exports = route;

@@ -33,10 +33,14 @@ module.exports = {
         res.render('../views/registerUser', {users});
     },
 
-    async login(req, res){
+    // async login(req, res){
+
+    //     const notFound = '';
+    //     const msg = ''
+    //     const incorrect = "";
       
-        res.render('/');
-    },
+    //     res.render('/', { notFound, msg, incorrect});
+    // },
     
     async vehicle(req, res){
 

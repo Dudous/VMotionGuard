@@ -1,9 +1,12 @@
-const sequelize = require('sequelize');
+const Sequelize = require('sequelize');
 
-//configurações da base de dados
-const database = new sequelize('VMotionDB', 'VMotion', 'vmotionvmotion123',
-{
-    dialect: 'mssql', host:'localhost', port: 1433
+// Configurações da base de dados
+const database = new Sequelize('VmotionDB', 'VMotion', 'vmotionvmotion123', {
+
+    dialect: 'mssql', host: 'localhost', port: 49976, dialectOptions: { options: {
+            trustServerCertificate: true 
+        }
+    }
 });
 
 database.sync();

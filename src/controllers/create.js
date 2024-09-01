@@ -37,7 +37,7 @@ module.exports = {
         const userExiste = await user.findOne({
             where: { CPF: parametro },
             raw: true, 
-            attributes: ['IDUser', 'CPF', 'Email', 'Password', 'IsAdmin']
+            attributes: ['IDUser', 'CPF', 'Name', 'Email', 'Password', 'IsAdmin']
         });
 
         console.log(userExiste)
@@ -51,8 +51,9 @@ module.exports = {
             console.log(typeof(data.userInput))
         
             if (userExiste.CPF == data.userInput && userExiste.Password == data.senhaInput){
+                console.log('chegou')
                
-                    return res.redirect('/homePage'); 
+                    return res.redirect('/'); 
                 
             } else {
                 const notFound = '';
@@ -76,7 +77,7 @@ module.exports = {
         // implementar criptografia de senhas
 
         await user.create({
-            CPF: data.cpf,
+            CPF: data.CPF,
             Name: data.name,
             Email: data.email,
             Password: data.password,

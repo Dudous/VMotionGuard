@@ -11,7 +11,7 @@ module.exports = {
         id: 1,
         };
 
-        res.render('../views/index',{user});
+        res.render('../views/index',{user, notFound, msg, incorrect});
     },
     
     async attMap(req, res){
