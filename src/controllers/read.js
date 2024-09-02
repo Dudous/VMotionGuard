@@ -15,47 +15,58 @@ module.exports = {
             attributes: ['IDUser', 'CPF', 'Email', 'Password', 'IsAdmin'],
             where: {CPF : data.CPF}
         })
+        const vehiclesUser = vehicle.findAll({
+            raw: true,
+            attributes: ['IDVehicle', 'Plate', 'Brand', 'Model', 'Year', 'IDUser', 'IDLoc'],
+            where: {IDUser: login[0].IDUser}})
         
         console.log(login[0].IDUser)
         
         id = login[0].IDUser
 
+        const users = user.findAll({
+            raw: true,
+            attributes: ['IDUser', 'CPF', 'Email', 'Password', 'IsAdmin']})
+        const vehicles = vehicle.findAll({
+            raw: true,
+            attributes: ['IDVehicle', 'Plate', 'Brand', 'Model', 'Year', 'IDUser', 'IDLoc']})
+
         if(login[0].IsAdmin)
-            res.render('../views/homePageAdmin',{id});
+            res.render('../views/homePageAdmin',{id, users, vehicles});
         else
-            res.render('../views/homePageUser', {id});
+            res.render('../views/homePageUser', {id, vehiclesUser});
     },
 
     
-    async home2(req, res) {
+    // async home2(req, res) {
 
-        const data = req.body
+    //     const data = req.body
 
-        const login = await user.findAll({
-            raw: true,
-            attributes: ['IDUser', 'CPF', 'Email', 'Password', 'IsAdmin'],
-            where: {CPF : data.CPF}
-        })
+    //     const login = await user.findAll({
+    //         raw: true,
+    //         attributes: ['IDUser', 'CPF', 'Email', 'Password', 'IsAdmin'],
+    //         where: {CPF : data.CPF}
+    //     })
         
-        console.log(login[0].IDUser)
+    //     console.log(login[0].IDUser)
         
-        id = login[0].IDUser
+    //     id = login[0].IDUser
 
-        if(login[0].IsAdmin)
-            res.render('../views/homePageAdmin',{id});
-        else
-            res.render('../views/homePageUser', {id});
-    },
+    //     if(login[0].IsAdmin)
+    //         res.render('../views/homePageAdmin',{id});
+    //     else
+    //         res.render('../views/homePageUser', {id});
+    // },
 
-    async homeUser(req, res) {
+    // async homeUser(req, res) {
 
-        res.render('../views/homePageUser');
-    },
+    //     res.render('../views/homePageUser');
+    // },
 
-    async homeAdmin(req, res) {
+    // async homeAdmin(req, res) {
 
-        res.render('../views/homePageAdmin');
-    },
+    //     res.render('../views/homePageAdmin');
+    // },
     
     async registerUser(req, res){
         const users = await user.findAll({
