@@ -11,7 +11,7 @@ const update = require('./src/controllers/update');
 // route.put('/:latitude/:longitude', map.attMap);
 
 route.get('/', map.map)
-route.post('/', create.login)
+route.post('/', read.login)
 
 route.post('/car:id', create.vehicle);
 route.delete('/car/:id', del.vehicle);

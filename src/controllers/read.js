@@ -26,25 +26,35 @@ module.exports = {
             res.render('../views/homePageUser', {id});
     },
 
+    async login(req, res) {
+        const data = req.body;
+        const cpf = data.userInput.replace(/[-.]/g, '');
     
-    async home2(req, res) {
-
-        const data = req.body
-
-        const login = await user.findAll({
-            raw: true,
-            attributes: ['IDUser', 'CPF', 'Email', 'Password', 'IsAdmin'],
-            where: {CPF : data.CPF}
-        })
+        const login = await user.findOne({
+            where: { CPF: cpf },
+            raw: true, 
+            attributes: ['IDUser', 'CPF', 'Name', 'Email', 'Password', 'IsAdmin']
+        });
         
-        console.log(login[0].IDUser)
+        if (login) {
         
-        id = login[0].IDUser
+            if (login.CPF == cpf && login.Password == data.senhaInput){
 
-        if(login[0].IsAdmin)
-            res.render('../views/homePageAdmin',{id});
-        else
-            res.render('../views/homePageUser', {id});
+                if(login.IsAdmin == 1)
+                    res.render('../views/homePageAdmin',{user : login});
+                else
+                    res.render('../views/homePageUser', {user : login});
+                
+            } else {
+                const notFound = '';
+                const incorrect = "Senha ou usuário incorretos";
+                return res.render('../views/index', {incorrect, notFound});
+            }
+        } else {
+            const incorrect = ''
+            const notFound = "Usuário não existe, por favor crie sua conta";
+            return res.render('../views/index', { notFound, incorrect}); 
+        }
     },
 
     async homeUser(req, res) {
