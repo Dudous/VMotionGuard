@@ -1,7 +1,14 @@
 const vehicle = require('../models/vehicles')
-const user = require('../models/users')
+const user = require('../models/users');
 
 module.exports = {
+
+    async login(req, res){
+        const notFound = ''
+        const incorrect = ''
+
+        res.render('../views/index',{notFound, incorrect});
+    },
 
     async vehicle(req, res){
         const data = req.body;

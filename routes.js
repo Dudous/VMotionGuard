@@ -10,7 +10,7 @@ const update = require('./src/controllers/update');
 
 // route.put('/:latitude/:longitude', map.attMap);
 
-route.get('/', map.map)
+route.get('/', create.login)
 route.post('/', read.login)
 
 route.post('/car:id', create.vehicle);

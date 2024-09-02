@@ -27,7 +27,9 @@ module.exports = {
     },
 
     async login(req, res) {
+
         const data = req.body;
+
         const cpf = data.userInput.replace(/[-.]/g, '');
     
         const login = await user.findOne({
