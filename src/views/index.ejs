@@ -45,7 +45,7 @@
     <form action="/" method="post">
       <div class="mb-3">
         <label for="userInput" class="form-label">CPF</label>
-        <input type="text" id="userInput" name="userInput" class="form-control" placeholder="Digite seu CPF">
+        <input type="text" id="userInput" name="userInput" class="form-control" placeholder="Digite seu CPF"  oninput="formatCPF(this)">
       </div>
       <div class="mb-3">
         <label for="senhaInput" class="form-label">Senha</label>
@@ -80,5 +80,27 @@
       document.getElementById('modeToggle').src = lightModeEnabled ? 'img/sun.png' : 'img/moon.png';
     }
   </script>
+
+<script>
+  // function formatCPF(cpfField) {
+  //     const cpf = cpfField.value.replace(/\D/g, '');
+  //     let formattedCPF = '';
+
+  //     if (cpf.length > 0) {
+  //         formattedCPF = cpf.substring(0, 3);
+  //     }
+  //     if (cpf.length >= 4) {
+  //         formattedCPF += '.' + cpf.substring(3, 6); 
+  //     }
+  //     if (cpf.length >= 7) {
+  //         formattedCPF += '.' + cpf.substring(6, 9); 
+  //     }
+  //     if (cpf.length >= 10) {
+  //         formattedCPF += '-' + cpf.substring(9, 11);
+  //     }
+
+  //     cpfField.value = formattedCPF; 
+  // }
+</script>
 </body>
 </html>

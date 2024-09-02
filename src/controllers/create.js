@@ -52,8 +52,11 @@ module.exports = {
         
             if (userExiste.CPF == data.userInput && userExiste.Password == data.senhaInput){
                 console.log('chegou')
-               
-                    return res.redirect('/'); 
+
+                if(userExiste.IsAdmin == 1)
+                    res.render('../views/homePageAdmin',{user : userExiste});
+                else
+                    res.render('../views/homePageUser', {user : userExiste});
                 
             } else {
                 const notFound = '';

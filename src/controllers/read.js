@@ -16,12 +16,45 @@ module.exports = {
             where: {CPF : data.CPF}
         })
         
+        console.log(login[0].IDUser)
+        
         id = login[0].IDUser
 
         if(login[0].IsAdmin)
             res.render('../views/homePageAdmin',{id});
         else
             res.render('../views/homePageUser', {id});
+    },
+
+    
+    async home2(req, res) {
+
+        const data = req.body
+
+        const login = await user.findAll({
+            raw: true,
+            attributes: ['IDUser', 'CPF', 'Email', 'Password', 'IsAdmin'],
+            where: {CPF : data.CPF}
+        })
+        
+        console.log(login[0].IDUser)
+        
+        id = login[0].IDUser
+
+        if(login[0].IsAdmin)
+            res.render('../views/homePageAdmin',{id});
+        else
+            res.render('../views/homePageUser', {id});
+    },
+
+    async homeUser(req, res) {
+
+        res.render('../views/homePageUser');
+    },
+
+    async homeAdmin(req, res) {
+
+        res.render('../views/homePageAdmin');
     },
     
     async registerUser(req, res){
@@ -32,15 +65,6 @@ module.exports = {
 
         res.render('../views/registerUser', {users});
     },
-
-    // async login(req, res){
-
-    //     const notFound = '';
-    //     const msg = ''
-    //     const incorrect = "";
-      
-    //     res.render('/', { notFound, msg, incorrect});
-    // },
     
     async vehicle(req, res){
 
