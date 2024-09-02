@@ -29,7 +29,7 @@ a{
     text-decoration: none !important;
 }
 a:hover{
-    background-color: gray;
+    color: gray !important;
 }
 
 .navegacao {
@@ -39,6 +39,11 @@ a:hover{
 .navegacao
 {
     display: flex;
+}
+.navegar
+{
+    display: flex;
+    flex-direction: column !important;
 }
 
 .navbar {
@@ -53,15 +58,38 @@ a:hover{
     padding: 15px; /* Ajuste o padding dos itens de navegação */
 }
 
+.title-gerenciamento {
+ 
+
+    padding: 7px;
+    border-radius: 10px;
+    font-size: 20px;
+    text-align: center;
+}
 .hello {
     background-color: blue;
     padding: 7px;
     border-radius: 10px;
 }
 
+#searchBar {
+    width: 90%;
+    padding: 10px;
+    margin-bottom: 10px;
+    font-size: 16px;
+    border-radius: 10px;
+    border: none;
+}
+
+#content p {
+    padding: 5px;
+    font-size: 18px;
+}
+
+
 main {
     display: grid;
-    grid-template-columns: repeat(2, 140px); 
+    /* grid-template-columns: repeat(2, 140px);  */
     grid-template-rows: auto; 
     gap: 20px; 
     justify-content: center; 
@@ -87,11 +115,11 @@ header img {
     border-radius: 10px;
 }
 
-.cards {
-    background-color: rgba(255, 255, 255, 0.931);
-    color: black;
-    width: 140px;
-    height: 140px;
+.cards-admin {
+    background-color: rgba(255, 255, 255, 0.492);
+    color: white;
+    width: 300px;
+    height: 50px;
     border-radius: 10px;
     border: none;
     position: relative;
@@ -101,6 +129,7 @@ header img {
     text-align: center;
     box-sizing: border-box;
     padding-top: 10px;
+
 }
 
 .card-header {
@@ -112,16 +141,20 @@ header img {
     box-sizing: border-box;
 }
 
-.cards img {
+.cards-admin img {
     max-width: 30px;
-    margin-right: 5px;
+    margin-left: 10px;
 }
 
-.cards h1 {
+.cards-admin h1 {
     font-size: 15px;
     margin: 0;
     flex-grow: 1;
     text-align: left;
+}
+
+.cards-admin h1{
+    margin-left: 3px;
 }
 
 .card-content {
@@ -133,11 +166,11 @@ header img {
     margin-bottom: 40px;
 }
 
-.cards p {
+.cards-admin p {
     margin: 0;
 }
 
-.cards button {
+.cards-admin button {
     padding: 7px;
     border: none;
     border-radius: 10px;
@@ -173,14 +206,14 @@ footer {
 
 }
 
-@media (min-width: 720px) {
+@media (min-width: 620px) {
     main {
         display: grid;
-        grid-template-columns: repeat(4, 140px); 
+        /* grid-template-columns: repeat(4, 140px);  */
         grid-template-rows: auto; 
         gap: 20px; 
         justify-content: center; 
-        margin: 10%;
+        margin: 60px;
         flex: 1; 
     }
     hr{
@@ -190,15 +223,60 @@ footer {
         display: block; 
     }
     footer {
-        display: none; /* Ocultar o footer para telas maiores */
+        display: none; 
     }
     .master {
         grid-column: span 4; 
         width: 620px !important; 
         height: 140px; 
     }
+    .cards-admin{
+        width: 600px;
+    }
+    #searchBar
+    {
+        width:70%;
+    }
     
 }
+
+
+@media (min-width: 1360px) {
+    main {
+        display: grid;
+        grid-template-columns: repeat(2, 640px); 
+        grid-template-rows: auto; 
+        gap: 20px; 
+        justify-content: center; 
+        margin: 60px;
+        flex: 1; 
+    }
+    hr{
+        height: 20px;
+    }
+    header .navegacao {
+        display: block; 
+    }
+    footer {
+        display: none; 
+    }
+    .master {
+        grid-column: span 4; 
+        width: 620px !important; 
+        height: 140px; 
+    }
+    .cards-admin{
+        width: 600px;
+    }
+    #searchBar
+    {
+        width:70%;
+    }
+    
+} 
+
+
+
 
 
 
