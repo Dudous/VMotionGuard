@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/registerUser.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="js/registerUser.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <title>Cadastro</title>
 </head>
 <body>
@@ -18,12 +20,12 @@
 
         <h1>CADASTRO</h1>
 
-        <form action="/user" method="post">
+        <form action="/user" method="post" onsubmit="return validateForm()">
               <div class="mb-3">
                 <label for="userCPF" class="form-label">CPF</label>
-                <input type="text" id="userCPF" class="form-control" name="CPF" placeholder="Digite seu CPF" required>
+                <input type="text" inputmode="numeric" id="userCPF" class="form-control" name="CPF" placeholder="Digite seu CPF" oninput="formatCPF(this)" required>
               </div>
-              
+
               <div class="mb-3">
                 <label for="userName" class="form-label">Nome</label>
                 <input type="text" id="userName" class="form-control" name="name" placeholder="Digite seu Nome" required>
@@ -35,18 +37,18 @@
               </div>
 
               <div class="mb-3">
-                <label for="userConfirmarEmail" class="form-label">Confirmar e-mail</label>
-                <input type="email" id="userConfirmarEmail" class="form-control" placeholder="Digite seu e-mail" required>
+                <label for="userEmailConfirm" class="form-label">Confirmar e-mail</label>
+                <input type="email" id="userEmailConfirm" class="form-control" placeholder="Digite seu e-mail" required>
               </div>
 
               <div class="mb-3">
-                <label for="senhaInput" class="form-label">Senha</label>
-                <input type="password" id="senhaInput" class="form-control" name="password" placeholder="Digite sua senha" required>
+                <label for="userPassword" class="form-label">Senha</label>
+                <input type="password" id="userPassword" class="form-control" name="password" placeholder="Digite sua senha" required>
               </div>
 
               <div class="mb-3">
-                <label for="senhaConfirmacaoInput" class="form-label">Confirmar senha</label>
-                <input type="password" id="senhaConfirmacaoInput" class="form-control" placeholder="Digite sua senha" required>
+                <label for="userPasswordConfirm" class="form-label">Confirmar senha</label>
+                <input type="password" id="userPasswordConfirm" class="form-control" placeholder="Digite sua senha" required>
               </div>
 
               <div class="mb-3 form-check">
@@ -58,8 +60,5 @@
           </form>
         
     </main>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-
 </body>
 </html>
