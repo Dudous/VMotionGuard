@@ -32,7 +32,7 @@ module.exports = {
     
     async login(req, res) {
         const data = req.body;
-        const parametro = data.userInput;
+        const parametro = data.userInput.replace(/[-.]/g, '');
     
         const userExiste = await user.findOne({
             where: { CPF: parametro },
@@ -50,7 +50,7 @@ module.exports = {
             console.log(typeof(userExiste.CPF))
             console.log(typeof(data.userInput))
         
-            if (userExiste.CPF == data.userInput && userExiste.Password == data.senhaInput){
+            if (userExiste.CPF == data.userInput.replace(/[-.]/g, '') && userExiste.Password == data.senhaInput){
                 console.log('chegou')
 
                 if(userExiste.IsAdmin == 1)

@@ -82,25 +82,25 @@
   </script>
 
 <script>
-  // function formatCPF(cpfField) {
-  //     const cpf = cpfField.value.replace(/\D/g, '');
-  //     let formattedCPF = '';
+  function formatCPF(cpfField) {
+      const cpf = cpfField.value.replace(/\D/g, '');
+      let formattedCPF = '';
 
-  //     if (cpf.length > 0) {
-  //         formattedCPF = cpf.substring(0, 3);
-  //     }
-  //     if (cpf.length >= 4) {
-  //         formattedCPF += '.' + cpf.substring(3, 6); 
-  //     }
-  //     if (cpf.length >= 7) {
-  //         formattedCPF += '.' + cpf.substring(6, 9); 
-  //     }
-  //     if (cpf.length >= 10) {
-  //         formattedCPF += '-' + cpf.substring(9, 11);
-  //     }
+      if (cpf.length > 0) {
+          formattedCPF = cpf.substring(0, 3);
+      }
+      if (cpf.length >= 4) {
+          formattedCPF += '.' + cpf.substring(3, 6); 
+      }
+      if (cpf.length >= 7) {
+          formattedCPF += '.' + cpf.substring(6, 9); 
+      }
+      if (cpf.length >= 10) {
+          formattedCPF += '-' + cpf.substring(9, 11);
+      }
 
-  //     cpfField.value = formattedCPF; 
-  // }
+      cpfField.value = formattedCPF; 
+  }
 </script>
 </body>
 </html>
