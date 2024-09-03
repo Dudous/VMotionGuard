@@ -10,8 +10,8 @@ const update = require('./src/controllers/update');
 
 // route.put('/:latitude/:longitude', map.attMap);
 
-route.get('/', create.login)
-route.post('/', read.login)
+route.get('/', read.login)
+route.post('/', create.login)
 
 route.post('/car:id', create.vehicle);
 route.delete('/car/:id', del.vehicle);
@@ -26,7 +26,7 @@ route.post('/registerCar', create.registerVehicle);
 
 route.get('/adminCars', read.adminCars)
 
-route.get('/homePageUser', read.home)
-route.get('/homePageAdmin', read.home)
+route.get('/homePageUser/:id', read.home)
+route.get('/homePageAdmin/:id', read.home)
 
 module.exports = route;

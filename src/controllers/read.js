@@ -6,79 +6,46 @@ const { attMap } = require('./map');
 
 module.exports = {
 
+    async login(req, res){
+        const notFound = ''
+        const incorrect = ''
+
+        const users = await user.findAll({
+            raw: true,
+            attributes: ['IDUser', 'CPF', 'Email', 'Password', 'IsAdmin']})
+
+        res.render('../views/index',{notFound, incorrect, users});
+    },
+
     async home(req, res) {
 
-        const data = req.body
+        const id = req.params.id;
 
         const login = await user.findAll({
             raw: true,
             attributes: ['IDUser', 'CPF', 'Email', 'Password', 'IsAdmin'],
-            where: {CPF : data.CPF}
+            where: {IDUser : id}
         })
-        const vehiclesUser = vehicle.findAll({
+        const vehiclesUser = await vehicle.findAll({
             raw: true,
             attributes: ['IDVehicle', 'Plate', 'Brand', 'Model', 'Year', 'IDUser', 'IDLoc'],
-            where: {IDUser: login[0].IDUser}})
+            where: {IDUser: id}})
         
-        console.log(login[0].IDUser)
-        
-        id = login[0].IDUser
+        console.log( "LOGIN" + login[0].IDUser)
+        console.log( "LOGIN2" + login.IDUser)
 
-        const users = user.findAll({
+        const users = await user.findAll({
             raw: true,
             attributes: ['IDUser', 'CPF', 'Email', 'Password', 'IsAdmin']})
-        const vehicles = vehicle.findAll({
+        const vehicles = await vehicle.findAll({
             raw: true,
             attributes: ['IDVehicle', 'Plate', 'Brand', 'Model', 'Year', 'IDUser', 'IDLoc']})
 
-        if(login[0].IsAdmin)
-            res.render('../views/homePageAdmin',{id, users, vehicles});
+        if(login.IsAdmin == 1)
+            res.render('../views/homePageAdmin/'+ id ,{id, login, users, vehicles});
         else
             res.render('../views/homePageUser', {id, vehiclesUser});
     },
-
-    async login(req, res) {
-
-        const data = req.body;
-
-        const cpf = data.userInput.replace(/[-.]/g, '');
-    
-        const login = await user.findOne({
-            where: { CPF: cpf },
-            raw: true, 
-            attributes: ['IDUser', 'CPF', 'Name', 'Email', 'Password', 'IsAdmin']
-        });
-        
-        if (login) {
-        
-            if (login.CPF == cpf && login.Password == data.senhaInput){
-
-                if(login.IsAdmin == 1)
-                    res.render('../views/homePageAdmin',{user : login});
-                else
-                    res.render('../views/homePageUser', {user : login});
-                
-            } else {
-                const notFound = '';
-                const incorrect = "Senha ou usuário incorretos";
-                return res.render('../views/index', {incorrect, notFound});
-            }
-        } else {
-            const incorrect = ''
-            const notFound = "Usuário não existe, por favor crie sua conta";
-            return res.render('../views/index', { notFound, incorrect}); 
-        }
-    },
-
-    // async homeUser(req, res) {
-
-    //     res.render('../views/homePageUser');
-    // },
-
-    // async homeAdmin(req, res) {
-
-    //     res.render('../views/homePageAdmin');
-    // },
     
     async registerUser(req, res){
         const users = await user.findAll({
