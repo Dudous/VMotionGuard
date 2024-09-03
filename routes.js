@@ -29,4 +29,6 @@ route.get('/adminCars', read.adminCars)
 route.get('/homePageUser', read.home)
 route.get('/homePageAdmin', read.home)
 
+route.get('userCars/:id', read.userCar);
+
 module.exports = route;

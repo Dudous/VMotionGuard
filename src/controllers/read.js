@@ -1,8 +1,5 @@
-const { where } = require('sequelize');
 const vehicle = require('../models/vehicles');
 const user = require('../models/users');
-const { raw } = require('express');
-const { attMap } = require('./map');
 
 module.exports = {
 
@@ -69,16 +66,6 @@ module.exports = {
             return res.render('../views/index', { notFound, incorrect}); 
         }
     },
-
-    // async homeUser(req, res) {
-
-    //     res.render('../views/homePageUser');
-    // },
-
-    // async homeAdmin(req, res) {
-
-    //     res.render('../views/homePageAdmin');
-    // },
     
     async registerUser(req, res){
         const users = await user.findAll({
@@ -113,5 +100,18 @@ module.exports = {
         });
 
         res.render('../views/adminCars',{vehicles})
+    },
+
+    async userCar(req, res){
+
+        const idUser = req.params.id;
+
+        const vehicles = await vehicle.findAll({
+            raw: true,
+            attributes: ['IDVehicle', 'Plate', 'Brand', 'Model', 'Year', 'IDUser', 'IDLoc'],
+            where: {IDUser: idUser}
+        });
+
+        res.render('../views/userCars', vehicles);
     }
 }
