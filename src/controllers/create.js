@@ -6,18 +6,9 @@ module.exports = {
     async login(req, res) {
 
         const data = req.body;
-        const id = req.body.IDUser;
 
         const cpf = data.userInput.replace(/[-.]/g, '');
 
-        const users = await user.findAll({
-            raw: true,
-            attributes: ['IDUser', 'CPF', 'Email', 'Password', 'IsAdmin']})
-
-        const vehicles = await vehicle.findAll({
-            raw: true,
-            attributes: ['IDVehicle', 'Plate', 'Brand', 'Model', 'Year', 'IDUser', 'IDLoc']})
-    
         const login = await user.findOne({
             where: { CPF: cpf },
             raw: true, 
@@ -27,11 +18,18 @@ module.exports = {
         if (login) {
         
             if (login.CPF == cpf && login.Password == data.senhaInput){
+                console.log(typeof(login.IsAdmin))
 
                 if(login.IsAdmin == 1)
-                    res.redirect('../views/homePageAdmin/' + login.IDUser);
-                else
-                    res.render('../views/homePageUser', {user : login});
+                {
+                    console.log("oi")
+                    res.redirect('/homePageAdmin/' + login.IDUser);
+                }
+                else{
+
+                    console.log("tcahua")
+                    res.redirect('/homePageUser/' +login.IDUser);
+                }
                 
             } else {
                 const notFound = '';
@@ -45,7 +43,11 @@ module.exports = {
         }
     },
 
-    
+    async home(req, res){
+
+        res.redirect('/');
+    },
+
 
     async vehicle(req, res){
         const data = req.body;

@@ -24,9 +24,12 @@ route.post('/user', create.user);
 route.get('/registerCar', read.registerVehicle);
 route.post('/registerCar', create.registerVehicle);
 
-route.get('/adminCars', read.adminCars)
-
 route.get('/homePageUser/:id', read.home)
+
 route.get('/homePageAdmin/:id', read.home)
+route.post('homePageAdmin/:id', create.home)
+
+route.get('/informacoesUsers/:id/:admin', read.editarUser)
+route.post('/informacoesUsers/:id/:admin', update.editarUser)
 
 module.exports = route;
