@@ -16,26 +16,26 @@ function updateMarker(lat, lng) {
 }
 
 // Função para enviar posição para o banco de dados e chamar função updateMarker
-const sendData = () => { 
-    if('geolocation' in navigator){
-        navigator.geolocation.watchPosition(
-            (position) => {
-                const { latitude, longitude } = position.coords;
-                updateMarker(latitude, longitude);
+// const sendData = () => { 
+//     if('geolocation' in navigator){
+//         navigator.geolocation.watchPosition(
+//             (position) => {
+//                 const { latitude, longitude } = position.coords;
+//                 updateMarker(latitude, longitude);
                 
-                fetch('/' + latitude + '/' + longitude, {method: "PUT"});
-            },
-            (error) => {
-                console.error('Erro ao obter a localização:', error);
-            },
-            { enableHighAccuracy: true }
-        );
-    }
-    else{
-        alert('n deu :(')
-    }
-}
+//                 fetch('/' + latitude + '/' + longitude, {method: "PUT"});
+//             },
+//             (error) => {
+//                 console.error('Erro ao obter a localização:', error);
+//             },
+//             { enableHighAccuracy: true }
+//         );
+//     }
+//     else{
+//         alert('n deu :(')
+//     }
+// }
 
-setInterval(() => {
-    sendData();
-}, 5000);
+// setInterval(() => {
+//     sendData();
+// }, 5000);

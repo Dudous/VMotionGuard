@@ -13,9 +13,13 @@ const update = require('./src/controllers/update');
 route.get('/', create.login)
 route.post('/', read.login)
 
+route.get('/userCars/:id', read.userCar);
+
+route.get('/car/:id', read.vehicle);
+// Até aqui td ok!!!
+
 route.post('/car:id', create.vehicle);
 route.delete('/car/:id', del.vehicle);
-route.get('/car:id', read.vehicle);
 route.patch('/car/:id', update.vehicle);
 
 route.get('/registerUser', read.registerUser);
@@ -26,9 +30,8 @@ route.post('/registerCar', create.registerVehicle);
 
 route.get('/adminCars', read.adminCars)
 
-route.get('/homePageUser', read.home)
-route.get('/homePageAdmin', read.home)
+// route.get('/homePageUser', read.home)
+// route.get('/homePageAdmin', read.home)
 
-route.get('userCars/:id', read.userCar);
 
 module.exports = route;

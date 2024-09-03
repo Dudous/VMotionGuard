@@ -1,10 +1,57 @@
 const vehicle = require('../models/vehicles');
 const user = require('../models/users');
+const coordinates = require('../models/coordinates');
 
 module.exports = {
+    
+    async login(req, res) {
+        
+        const data = req.body;
+        
+        const cpf = data.userInput.replace(/[-.]/g, '');
+        
+        const login = await user.findOne({
+            where: { CPF: cpf },
+            raw: true, 
+            attributes: ['IDUser', 'CPF', 'Name', 'Email', 'Password', 'IsAdmin']
+        });
+        
+        if (login) {
+            
+            if (login.CPF == cpf && login.Password == data.senhaInput){
+                
+                if(login.IsAdmin == 1)
+                    res.render('../views/homePageAdmin',{user : login});
+                else
+                res.render('../views/homePageUser', {user : login});
+            
+        } else {
+            const notFound = 0;
+            const incorrect = 1;
+            return res.render('../views/index', {incorrect, notFound});
+        }
+    } else {
+        const notFound = 1;
+        const incorrect = 0
+        return res.render('../views/index', {incorrect, notFound}); 
+    }
+},
+
+    async userCar(req, res){
+
+        const idUser = req.params.id;
+
+        const vehicles = await vehicle.findAll({
+            raw: true,
+            attributes: ['IDVehicle', 'Plate', 'Brand', 'Model', 'Year', 'IDUser', 'IDLoc'],
+            where: {IDUser: idUser}
+        });
+
+        res.render('../views/userCars', {vehicles});
+    },
 
     async home(req, res) {
-
+    
         const data = req.body
 
         const login = await user.findAll({
@@ -12,18 +59,18 @@ module.exports = {
             attributes: ['IDUser', 'CPF', 'Email', 'Password', 'IsAdmin'],
             where: {CPF : data.CPF}
         })
+
         const vehiclesUser = vehicle.findAll({
             raw: true,
             attributes: ['IDVehicle', 'Plate', 'Brand', 'Model', 'Year', 'IDUser', 'IDLoc'],
             where: {IDUser: login[0].IDUser}})
-        
-        console.log(login[0].IDUser)
         
         id = login[0].IDUser
 
         const users = user.findAll({
             raw: true,
             attributes: ['IDUser', 'CPF', 'Email', 'Password', 'IsAdmin']})
+
         const vehicles = vehicle.findAll({
             raw: true,
             attributes: ['IDVehicle', 'Plate', 'Brand', 'Model', 'Year', 'IDUser', 'IDLoc']})
@@ -32,39 +79,6 @@ module.exports = {
             res.render('../views/homePageAdmin',{id, users, vehicles});
         else
             res.render('../views/homePageUser', {id, vehiclesUser});
-    },
-
-    async login(req, res) {
-
-        const data = req.body;
-
-        const cpf = data.userInput.replace(/[-.]/g, '');
-    
-        const login = await user.findOne({
-            where: { CPF: cpf },
-            raw: true, 
-            attributes: ['IDUser', 'CPF', 'Name', 'Email', 'Password', 'IsAdmin']
-        });
-        
-        if (login) {
-        
-            if (login.CPF == cpf && login.Password == data.senhaInput){
-
-                if(login.IsAdmin == 1)
-                    res.render('../views/homePageAdmin',{user : login});
-                else
-                    res.render('../views/homePageUser', {user : login});
-                
-            } else {
-                const notFound = '';
-                const incorrect = "Senha ou usuário incorretos";
-                return res.render('../views/index', {incorrect, notFound});
-            }
-        } else {
-            const incorrect = ''
-            const notFound = "Usuário não existe, por favor crie sua conta";
-            return res.render('../views/index', { notFound, incorrect}); 
-        }
     },
     
     async registerUser(req, res){
@@ -78,13 +92,17 @@ module.exports = {
     
     async vehicle(req, res){
 
-        const vehicles = await vehicle.findAll({
+        const coord = await vehicle.findOne({
             raw: true,
-            attributes: ['IDVehicle', 'Plate', 'Brand', 'Model', 'Year'],
-            where: {IDUser : req.params.id}
+            attributes: [],
+            include: [{model: coordinates,
+                required: false,
+                attributes: ['Latitude', 'Longitude']
+            }],
+            where: {IDVehicle : req.params.id}
         });
 
-        res.render('../views/index', {vehicles});
+        res.render('../views/viewCar', {coord});
     },
 
     async registerVehicle(req, res){
@@ -100,18 +118,5 @@ module.exports = {
         });
 
         res.render('../views/adminCars',{vehicles})
-    },
-
-    async userCar(req, res){
-
-        const idUser = req.params.id;
-
-        const vehicles = await vehicle.findAll({
-            raw: true,
-            attributes: ['IDVehicle', 'Plate', 'Brand', 'Model', 'Year', 'IDUser', 'IDLoc'],
-            where: {IDUser: idUser}
-        });
-
-        res.render('../views/userCars', vehicles);
     }
 }
