@@ -1,0 +1,299 @@
+/* Estilos padrão para todos os dispositivos */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+body {
+    background-color: black !important;
+    font-family: "Roboto", system-ui;
+    font-weight: 400;
+    font-style: normal;
+}
+
+header {
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.content {
+    padding: 4%;
+}
+
+a {
+    color: white;
+    text-decoration: none !important;
+}
+
+a:hover {
+    color: gray !important;
+}
+
+.navegacao {
+    width: 100%;
+    display: flex;
+}
+
+.navegar {
+    display: flex;
+    flex-direction: column !important;
+}
+
+.navbar {
+    height: 60px;
+}
+
+.navbar-brand {
+    font-size: 1.5rem;
+}
+
+.navbar-nav .nav-link {
+    padding: 15px;
+}
+
+.title-gerenciamento {
+    padding: 7px;
+    border-radius: 10px;
+    font-size: 20px;
+    text-align: center;
+}
+
+.hello {
+    background-color: blue;
+    padding: 7px;
+    border-radius: 10px;
+}
+
+#searchBar {
+    width: 90%;
+    padding: 10px;
+    margin-bottom: 10px;
+    font-size: 16px;
+    border-radius: 10px;
+    border: none;
+}
+
+#content p {
+    padding: 5px;
+    font-size: 18px;
+}
+
+main {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin: 10px;
+    flex: 1;
+}
+
+header img {
+    height: 100px !important;
+    width: auto;
+}
+
+.master {
+    grid-column: span 2;
+    width: 300px !important;
+    height: 140px;
+}
+
+.title {
+    background-color: orange;
+    padding: 3%;
+    border-radius: 10px;
+}
+
+.cards-admin {
+    background-color: rgba(255, 255, 255, 0.492);
+    color: white;
+    width: 300px;
+    border-radius: 10px;
+    border: 1px solid white;
+    padding-top: 10px;
+    cursor: pointer;
+    text-align: start;
+}
+
+.card-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.cards-admin img {
+    max-width: 30px;
+    margin-left: 10px;
+}
+
+.cards-admin h1 {
+    font-size: 15px;
+    margin: 0;
+    margin-left: 3px;
+}
+
+.card-content {
+    padding: 10px;
+    width: 70% !important;
+    display: flex;
+    align-items: flex-start !important;
+    justify-content: flex-start !important;
+    flex-direction: column;
+    text-align: start !important;
+}
+
+.cards-admin:hover {
+    background-color: rgb(40, 38, 38);
+}
+
+.cards-admin button {
+    background-color: transparent;
+    border: none;
+}
+
+.icon {
+    max-width: 30px;
+}
+
+.container {
+    display: flex;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+footer {
+    background-color: blue;
+    padding: 20px;
+    width: 100%;
+    box-sizing: border-box;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20%;
+}
+
+/* Media Queries */
+
+@media (max-width: 497px) {
+    main {
+        display: flex; /* Certifique-se de usar 'flex' em vez de 'fex' */
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+    }
+
+    .cards-admin {
+        height: 150px;
+    }
+
+    #searchBar {
+        width: 70%;
+    }
+}
+
+@media (min-width: 498px) and (max-width: 729px) {
+    main {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    header .navegacao {
+        display: none;
+    }
+
+    .cards-admin {
+        height: 160px !important;
+    }
+}
+
+@media (min-width: 730px) and (max-width: 925px) {
+    main {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+        gap: 20px;
+        justify-content: center; 
+        align-items: start; 
+        margin: 50px;
+        max-width: 700px; 
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .cards-admin {
+        height: 160px;
+    }
+
+    .master {
+        grid-column: span 2;
+    }
+
+    .navegacao {
+        display: block;
+    }
+
+    footer {
+        display: none;
+    }
+}
+
+@media (min-width: 926px) and (max-width: 1360px) {
+    main {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 20px;
+        justify-content: center; 
+        align-items: start;
+        margin: 10px;
+        max-width: 900px; 
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .cards-admin {
+        height: 160px;
+    }
+
+    .master {
+        grid-column: span 2;
+    }
+
+    .navegacao {
+        display: block;
+    }
+
+    footer {
+        display: none;
+    }
+}
+
+@media (min-width: 1360px) {
+    main {
+        display: grid;
+        grid-template-columns: repeat(2, 640px);
+        gap: 20px;
+        margin: 60px;
+        max-width: 1280px; 
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .cards-admin {
+        width: 600px;
+        height: 150px;
+    }
+
+    #searchBar {
+        width: 70%;
+    }
+    .navegacao {
+        display: block;
+    }
+
+}

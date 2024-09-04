@@ -32,4 +32,7 @@ route.post('homePageAdmin/:id', create.home)
 route.get('/informacoesUsers/:id/:admin', read.editarUser)
 route.post('/informacoesUsers/:id/:admin', update.editarUser)
 
+route.get('/allCars/:id', read.allCars);
+route.post('/registerCar', create.registerVehicle);
+
 module.exports = route;

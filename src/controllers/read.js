@@ -1,6 +1,7 @@
 const { where } = require('sequelize');
 const vehicle = require('../models/vehicles');
 const user = require('../models/users');
+const DataBase = require('../config/db');
 const { raw } = require('express');
 const { attMap } = require('./map');
 
@@ -68,6 +69,42 @@ module.exports = {
         })
        
         res.render('../views/informacoesUsers',{currentUser, admin});
+    },
+
+    async allCars(req, res){
+
+        const id = req.params.id
+
+        const vehicles = await vehicle.findAll({
+            raw: true,
+            attributes: ['IDVehicle', 'Plate', 'Brand', 'Model', 'Year', 'IDUser', 'IDLoc']})
+
+        const users = await user.findAll({
+            raw: true,
+            attributes: ['IDUser', 'Name', 'CPF', 'Email', 'Password', 'IsAdmin']})
+
+        const results = await DataBase.query(`
+            SELECT
+            u.IDUser,
+            u.Name,
+            u.Email,
+            u.CPF,
+            v.IDVehicle,
+            v.Plate,
+            v.Brand,
+            v.Model,
+            v.Year
+            FROM 
+            users as u
+            inner join vehicles as v
+            ON u.IDUser = v.IDUser;
+            `, {type: DataBase.SELECT, raw: true});
+
+            console.log(results)
+            console.log( 'resultado 1' + JSON.stringify(results[0][1]))
+            
+
+        res.render('../views/allCars', {vehicles, users, results, id});
     },
 
 }
