@@ -1,46 +1,83 @@
-const { where } = require('sequelize');
 const vehicle = require('../models/vehicles');
 const user = require('../models/users');
-const DataBase = require('../config/db');
 const { raw } = require('express');
 const { attMap } = require('./map');
 
 module.exports = {
 
-    async login(req, res){
-        const notFound = ''
-        const incorrect = ''
-
-        res.render('../views/index',{notFound, incorrect});
-    },
-
     async home(req, res) {
 
-        const id = req.params.id;
+        const data = req.body
 
-        const login = await user.findOne({
+        const login = await user.findAll({
             raw: true,
-            attributes: ['IDUser', 'Name', 'CPF', 'Email', 'Password', 'IsAdmin'],
-            where: {IDUser : id}
+            attributes: ['IDUser', 'CPF', 'Email', 'Password', 'IsAdmin'],
+            where: {CPF : data.CPF}
         })
-        const vehiclesUser = await vehicle.findAll({
+        const vehiclesUser = vehicle.findAll({
             raw: true,
             attributes: ['IDVehicle', 'Plate', 'Brand', 'Model', 'Year', 'IDUser', 'IDLoc'],
-            where: {IDUser: id}})
+            where: {IDUser: login[0].IDUser}})
+        
+        console.log(login[0].IDUser)
+        
+        id = login[0].IDUser
 
-        const users = await user.findAll({
+        const users = user.findAll({
             raw: true,
-            attributes: ['IDUser', 'Name', 'CPF', 'Email', 'Password', 'IsAdmin']})
-            
-        const vehicles = await vehicle.findAll({
+            attributes: ['IDUser', 'CPF', 'Email', 'Password', 'IsAdmin']})
+        const vehicles = vehicle.findAll({
             raw: true,
             attributes: ['IDVehicle', 'Plate', 'Brand', 'Model', 'Year', 'IDUser', 'IDLoc']})
 
-        if(login.IsAdmin == 1)
-            res.render('../views/homePageAdmin',{id, login, users, vehicles});
+        if(login[0].IsAdmin)
+            res.render('../views/homePageAdmin',{id, users, vehicles});
         else
-            res.render('../views/homePageUser',{id, vehiclesUser, login});
+            res.render('../views/homePageUser', {id, vehiclesUser});
     },
+
+    async login(req, res) {
+
+        const data = req.body;
+
+        const cpf = data.userInput.replace(/[-.]/g, '');
+    
+        const login = await user.findOne({
+            where: { CPF: cpf },
+            raw: true, 
+            attributes: ['IDUser', 'CPF', 'Name', 'Email', 'Password', 'IsAdmin']
+        });
+        
+        if (login) {
+        
+            if (login.CPF == cpf && login.Password == data.senhaInput){
+
+                if(login.IsAdmin == 1)
+                    res.render('../views/homePageAdmin',{user : login});
+                else
+                    res.render('../views/homePageUser', {user : login});
+                
+            } else {
+                const notFound = '';
+                const incorrect = "Senha ou usuário incorretos";
+                return res.render('../views/index', {incorrect, notFound});
+            }
+        } else {
+            const incorrect = ''
+            const notFound = "Usuário não existe, por favor crie sua conta";
+            return res.render('../views/index', { notFound, incorrect}); 
+        }
+    },
+
+    // async homeUser(req, res) {
+
+    //     res.render('../views/homePageUser');
+    // },
+
+    // async homeAdmin(req, res) {
+
+    //     res.render('../views/homePageAdmin');
+    // },
     
     async registerUser(req, res){
     
@@ -49,12 +86,20 @@ module.exports = {
     
     async vehicle(req, res){
 
-        res.render('../views/index');
+        const vehicles = await vehicle.findAll({
+            raw: true,
+            attributes: ['IDVehicle', 'Plate', 'Brand', 'Model', 'Year'],
+            where: {IDUser : req.params.id}
+        });
+
+        res.render('../views/index', {vehicles});
     },
 
     async registerVehicle(req, res){
 
-        res.render('../views/registerCar');
+        const user = req.params.user;
+
+        res.render('../views/registerCar', {user});
     },
 
     async editarUser(req, res) {

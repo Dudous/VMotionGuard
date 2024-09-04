@@ -24,13 +24,13 @@
   </header>
 
   <main>
-    <%if (notFound != '') { %>
+    <%if (notFound) { %>
       <script>
           alert("Usuário não existe! Por favor crie sua conta");
       </script>
     <%} %>
 
-    <%if (incorrect != '') { %>
+    <%if (incorrect) { %>
       <script>
           alert("Senha Incorreta!");
       </script>

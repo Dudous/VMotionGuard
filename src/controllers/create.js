@@ -70,10 +70,11 @@ module.exports = {
         Plate: data.plate,
         Brand : data.brand,
         Model: data.model,
-        Year: data.year
+        Year: data.year,
+        IDUser: req.params.user
         });
 
-        res.redirect('/');
+        res.redirect('/userCars/'+ req.params.user);
     },   
 
     async user(req, res){

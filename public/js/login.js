@@ -10,7 +10,7 @@ function toggleDarkMode() {
     localStorage.setItem('light-mode', lightModeEnabled ? 'enabled' : 'disabled');
     document.getElementById('modeToggle').src = lightModeEnabled ? 'img/sun.png' : 'img/moon.png';
 }
-  
+
 function formatCPF(cpfField) {
     const cpf = cpfField.value.replace(/\D/g, '');
     let formattedCPF = '';
