@@ -5,13 +5,17 @@ module.exports = {
 
         const idUser = req.params.user
 
+
+        console.log('post car' + idUser)
+        console.log('post car' + req.params.id)
+
         await vehicle.destroy({
             where:{
                 IDVehicle : req.params.id
             }
         });
 
-        res.redirect('/userCars/'+ idUser);
+        res.redirect('/userCars/' + idUser);
     }
 
 }

@@ -295,5 +295,8 @@ footer {
     .navegacao {
         display: block;
     }
+    footer {
+        display: none;
+    }
 
 }

@@ -1,5 +1,7 @@
 const vehicle = require('../models/vehicles');
 const user = require('../models/users');
+const coordinates = require('../models/coordinates')
+const DataBase = require('../config/db')
 const { raw } = require('express');
 const { attMap } = require('./map');
 
@@ -7,77 +9,40 @@ module.exports = {
 
     async home(req, res) {
 
-        const data = req.body
+        const id = req.params.id;
 
-        const login = await user.findAll({
+        const login = await user.findOne({
             raw: true,
-            attributes: ['IDUser', 'CPF', 'Email', 'Password', 'IsAdmin'],
-            where: {CPF : data.CPF}
+            attributes: ['IDUser', 'Name', 'CPF', 'Email', 'Password', 'IsAdmin'],
+            where: {IDUser : id}
         })
-        const vehiclesUser = vehicle.findAll({
+        const vehiclesUser = await vehicle.findAll({
             raw: true,
             attributes: ['IDVehicle', 'Plate', 'Brand', 'Model', 'Year', 'IDUser', 'IDLoc'],
-            where: {IDUser: login[0].IDUser}})
-        
-        console.log(login[0].IDUser)
-        
-        id = login[0].IDUser
+            where: {IDUser: id}})
 
-        const users = user.findAll({
+        const users = await user.findAll({
             raw: true,
-            attributes: ['IDUser', 'CPF', 'Email', 'Password', 'IsAdmin']})
-        const vehicles = vehicle.findAll({
+            attributes: ['IDUser', 'Name', 'CPF', 'Email', 'Password', 'IsAdmin']})
+            
+        const vehicles = await vehicle.findAll({
             raw: true,
             attributes: ['IDVehicle', 'Plate', 'Brand', 'Model', 'Year', 'IDUser', 'IDLoc']})
 
-        if(login[0].IsAdmin)
-            res.render('../views/homePageAdmin',{id, users, vehicles});
+        if(login.IsAdmin == 1)
+            res.render('../views/homePageAdmin',{id, login, users, vehicles});
         else
-            res.render('../views/homePageUser', {id, vehiclesUser});
+            res.render('../views/homePageUser',{vehiclesUser, login});
     },
 
     async login(req, res) {
 
-        const data = req.body;
+        const notFound = '';
+        const incorrect = "";
 
-        const cpf = data.userInput.replace(/[-.]/g, '');
-    
-        const login = await user.findOne({
-            where: { CPF: cpf },
-            raw: true, 
-            attributes: ['IDUser', 'CPF', 'Name', 'Email', 'Password', 'IsAdmin']
-        });
-        
-        if (login) {
-        
-            if (login.CPF == cpf && login.Password == data.senhaInput){
-
-                if(login.IsAdmin == 1)
-                    res.render('../views/homePageAdmin',{user : login});
-                else
-                    res.render('../views/homePageUser', {user : login});
-                
-            } else {
-                const notFound = '';
-                const incorrect = "Senha ou usuário incorretos";
-                return res.render('../views/index', {incorrect, notFound});
-            }
-        } else {
-            const incorrect = ''
-            const notFound = "Usuário não existe, por favor crie sua conta";
-            return res.render('../views/index', { notFound, incorrect}); 
-        }
+        res.render('../views/index', {notFound, incorrect});
     },
 
-    // async homeUser(req, res) {
-
-    //     res.render('../views/homePageUser');
-    // },
-
-    // async homeAdmin(req, res) {
-
-    //     res.render('../views/homePageAdmin');
-    // },
     
     async registerUser(req, res){
     
@@ -86,13 +51,19 @@ module.exports = {
     
     async vehicle(req, res){
 
-        const vehicles = await vehicle.findAll({
+        const idUser = req.params.user
+
+        const car = await vehicle.findOne({
             raw: true,
             attributes: ['IDVehicle', 'Plate', 'Brand', 'Model', 'Year'],
-            where: {IDUser : req.params.id}
+            include: [{model: coordinates,
+                required: false,
+                attributes: ['Latitude', 'Longitude']
+            }],
+            where: {IDVehicle : req.params.id}
         });
 
-        res.render('../views/index', {vehicles});
+        res.render('../views/viewCar', {idUser, car});
     },
 
     async registerVehicle(req, res){
@@ -150,6 +121,21 @@ module.exports = {
             
 
         res.render('../views/allCars', {vehicles, users, results, id});
+    },
+
+    async userCar(req, res){
+
+        const idUser = req.params.user;
+
+        const vehicles = await vehicle.findAll({
+            raw: true,
+            attributes: ['IDVehicle', 'Plate', 'Brand', 'Model', 'Year', 'IDUser', 'IDLoc'],
+            where: {IDUser: idUser}
+        });
+
+        console.log("car" + idUser)
+
+        res.render('../views/userCars', {idUser, vehicles});
     },
 
 }

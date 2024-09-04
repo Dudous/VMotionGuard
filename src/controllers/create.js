@@ -28,7 +28,7 @@ module.exports = {
                 else{
 
                     console.log("tcahua")
-                    res.redirect('/homePageUser/' +login.IDUser);
+                    res.redirect('/homePageUser/' + login.IDUser);
                 }
                 
             } else {
