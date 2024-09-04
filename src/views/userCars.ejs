@@ -36,12 +36,14 @@
             
             <div class="cards-admin">
                 <div class="card-header">
-                    <a href="/car/<%= vehicles[i].IDVehicle %>"><h1><%= vehicles[i].Model %></h1></a>
+                    <a href="/car/<%= idUser %>/<%= vehicles[i].IDVehicle %>"><h1><%= vehicles[i].Model %></h1></a>
                     <!-- <img class="icon" src="img/avançar-light.png" alt=""> -->
                 </div>
             </div>
             
         <% } %>
+
+        <a href="/registerCar/<%=idUser%>">Adicionar Carro</a>
 
     </main>
     <footer>

@@ -39,7 +39,7 @@ module.exports = {
 
     async userCar(req, res){
 
-        const idUser = req.params.id;
+        const idUser = req.params.user;
 
         const vehicles = await vehicle.findAll({
             raw: true,
@@ -47,38 +47,9 @@ module.exports = {
             where: {IDUser: idUser}
         });
 
-        res.render('../views/userCars', {vehicles});
-    },
+        console.log(idUser)
 
-    async home(req, res) {
-    
-        const data = req.body
-
-        const login = await user.findAll({
-            raw: true,
-            attributes: ['IDUser', 'CPF', 'Email', 'Password', 'IsAdmin'],
-            where: {CPF : data.CPF}
-        })
-
-        const vehiclesUser = vehicle.findAll({
-            raw: true,
-            attributes: ['IDVehicle', 'Plate', 'Brand', 'Model', 'Year', 'IDUser', 'IDLoc'],
-            where: {IDUser: login[0].IDUser}})
-        
-        id = login[0].IDUser
-
-        const users = user.findAll({
-            raw: true,
-            attributes: ['IDUser', 'CPF', 'Email', 'Password', 'IsAdmin']})
-
-        const vehicles = vehicle.findAll({
-            raw: true,
-            attributes: ['IDVehicle', 'Plate', 'Brand', 'Model', 'Year', 'IDUser', 'IDLoc']})
-
-        if(login[0].IsAdmin)
-            res.render('../views/homePageAdmin',{id, users, vehicles});
-        else
-            res.render('../views/homePageUser', {id, vehiclesUser});
+        res.render('../views/userCars', {idUser, vehicles});
     },
     
     async registerUser(req, res){
@@ -92,9 +63,11 @@ module.exports = {
     
     async vehicle(req, res){
 
-        const coord = await vehicle.findOne({
+        const idUser = req.params.user
+
+        const car = await vehicle.findOne({
             raw: true,
-            attributes: [],
+            attributes: ['IDVehicle', 'Plate', 'Brand', 'Model', 'Year'],
             include: [{model: coordinates,
                 required: false,
                 attributes: ['Latitude', 'Longitude']
@@ -102,12 +75,14 @@ module.exports = {
             where: {IDVehicle : req.params.id}
         });
 
-        res.render('../views/viewCar', {coord});
+        res.render('../views/viewCar', {idUser, car});
     },
 
     async registerVehicle(req, res){
 
-        res.render('../views/registerCar');
+        const user = req.params.user;
+
+        res.render('../views/registerCar', {user});
     },
 
     async adminCars(req, res){

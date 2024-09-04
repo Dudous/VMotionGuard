@@ -16,6 +16,7 @@
     "mssql": "^11.0.1",
     "nodemon": "^3.1.4",
     "sequelize": "^6.37.3",
+    "sinesp-api": "^3.0.0",
     "vmotionguard": "file:"
   }
 }
