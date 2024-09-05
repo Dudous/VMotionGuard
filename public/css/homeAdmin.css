@@ -33,7 +33,7 @@ a:hover{
 }
 
 .navegacao {
-    width: 100%; 
+    width: 100%; /* Ocupa toda a largura da tela */
 }
 
 .navegacao
@@ -47,15 +47,15 @@ a:hover{
 }
 
 .navbar {
-    height: 60px; 
+    height: 60px; /* Ajuste a altura da barra de navegação conforme necessário */
 }
 
 .navbar-brand {
-    font-size: 1.5rem; 
+    font-size: 1.5rem; /* Tamanho da fonte do nome da marca */
 }
 
 .navbar-nav .nav-link {
-    padding: 15px; 
+    padding: 15px; /* Ajuste o padding dos itens de navegação */
 }
 
 .title-gerenciamento {
@@ -88,7 +88,9 @@ a:hover{
 
 
 main {
-    display: flex;
+    display: grid;
+    /* grid-template-columns: repeat(2, 140px);  */
+    grid-template-rows: auto; 
     gap: 20px; 
     justify-content: center; 
     margin: 10px;
@@ -112,7 +114,6 @@ header img {
     padding: 3%;
     border-radius: 10px;
 }
-
 .cards-admin {
     background-color: rgba(255, 255, 255, 0.492);
     color: white;
@@ -127,8 +128,7 @@ header img {
     text-align: center;
     box-sizing: border-box;
     padding-top: 10px;
-    cursor: pointer;
-
+    margin: 20px;
 }
 
 .card-header {
@@ -143,6 +143,7 @@ header img {
 .cards-admin img {
     max-width: 30px;
     margin-left: 10px;
+    align-self: end;
 }
 
 .cards-admin h1 {
@@ -150,9 +151,6 @@ header img {
     margin: 0;
     flex-grow: 1;
     text-align: left;
-}
-
-.cards-admin h1{
     margin-left: 3px;
 }
 
@@ -169,15 +167,23 @@ header img {
     margin: 0;
 }
 
-.cards-admin:hover{
-    background-color: rgb(40, 38, 38);
+.cards-admin button {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 7px;
+    border: none;
+    border-radius: 10px;
+    background-color: transparent;
+    width: 90%;
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
-.cards-admin button {
-
-    background-color: transparent;
-    border: none;
-    
+.cards-admin button img {
+    max-width: 20px;
 }
 
 .icon {
@@ -196,14 +202,15 @@ footer {
     gap: 20%;
 }
 
-@media(max-width : 511px)
-{
-     main{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: flex-start;
-     }
+.container {
+    display: flex;
+    flex-wrap: wrap; 
+    gap: 20px; 
+}
+
+.cards-admin {
+    flex: 1 1 calc(50% - 20px); 
+    box-sizing: border-box; 
 }
 
 @media (max-width: 719px) {
@@ -216,74 +223,41 @@ footer {
 
 @media (min-width: 620px) {
     main {
-        display: flex;
-        margin: 10px;
-        justify-content: center; 
-        align-items: flex-start;
-        margin: 60px;
-        flex: 1; 
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Adapta o número de colunas */
+        grid-template-rows: auto;
+        gap: 20px;
+        justify-content: center;
+        margin: 30px;
+        flex: 1;
     }
-    hr{
-        height: 20px;
-    }
-    header .navegacao {
-        display: block; 
-    }
-    footer {
-        display: none; 
-    }
-    .master {
-        grid-column: span 4; 
-        width: 620px !important; 
-        height: 140px; 
-    }
-    .cards-admin{
-        width: 600px;
-    }
-    #searchBar
-    {
-        width:70%;
-    }
-    
-}
 
+    .cards-admin {
+        width: 100%; /* Faz com que as cartas ocupem a largura total disponível na coluna */
+        max-width: 600px; /* Define um limite máximo para a largura das cartas */
+    }
+
+    #searchBar {
+        width: 70%;
+    }
+}
 
 @media (min-width: 1360px) {
     main {
         display: grid;
-        grid-template-columns: repeat(2, 640px); 
-        grid-template-rows: auto; 
-        gap: 20px; 
-        justify-content: center; 
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Continua adaptando o número de colunas */
+        grid-template-rows: auto;
+        gap: 20px;
+        justify-content: center;
         margin: 60px;
-        flex: 1; 
+        flex: 1;
     }
-    hr{
-        height: 20px;
-    }
-    header .navegacao {
-        display: block; 
-    }
-    footer {
-        display: none; 
-    }
-    .master {
-        grid-column: span 4; 
-        width: 620px !important; 
-        height: 140px; 
-    }
-    .cards-admin{
-        width: 200px;
-    }
-    #searchBar
-    {
-        width:70%;
-    }
-    
-} 
 
+    .cards-admin {
+        max-width: 400px;
+    }
 
-
-
-
-
+    #searchBar {
+        width: 70%;
+    }
+}
