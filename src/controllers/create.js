@@ -45,6 +45,9 @@ module.exports = {
 
     async home(req, res){
 
+        const data = req.body
+        const mode = data.mode
+
         res.redirect('/');
     },
 
@@ -87,7 +90,7 @@ module.exports = {
             CPF: data.CPF.replace(/[-.]/g, ''),
             Name: data.name,
             Email: data.email,
-            Password: data.password,
+            Password: data.userPassword,
             IsAdmin: 0
         });
 
