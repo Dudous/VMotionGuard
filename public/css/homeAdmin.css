@@ -42,6 +42,7 @@ a:hover{
     flex-direction: column !important;
 }
 
+
 .navbar {
     height: 60px; /* Ajuste a altura da barra de navegação conforme necessário */
 }
@@ -228,6 +229,9 @@ footer {
     box-sizing: border-box; 
 }
 
+
+
+
 @media (max-width: 719px) {
 
     header .navegacao {
@@ -286,14 +290,15 @@ footer {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
         grid-template-rows: auto;
-        gap: 20px;
+        gap: 10px;
         justify-content: center;
-        margin: 60px;
+        margin: 20px;
         flex: 1;
     }
 
     .cards-admin {
         max-width: 400px;
+        margin: 0;
     }
 
     #searchBar {
