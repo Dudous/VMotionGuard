@@ -198,6 +198,14 @@ header img {
     max-width: 30px;
 }
 
+#carros
+{
+    margin: 0;
+    padding: 0;
+    background-color: transparent !important;
+    border: none;
+}
+
 footer {
     background-color: blue;
     padding: 20px; 
@@ -208,7 +216,6 @@ footer {
     justify-content: center;
     align-items: center;
     gap: 20%;
-    position: fixed !important;
 }
 
 .container {
