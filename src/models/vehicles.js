@@ -3,7 +3,7 @@ const Sequelize = require('sequelize');
 const database = require('../config/db');
 
 const users = require('./users');
-const coordinates = require('./coordinates');
+const carInfo = require('./carInfo');
 
 // Criando a tabela Sala
 const vehicles = database.define('Vehicle', {
@@ -37,9 +37,9 @@ vehicles.belongsTo(users, {
     onDelete: 'CASCADE'
 });
 
-vehicles.belongsTo(coordinates, {
+vehicles.belongsTo(carInfo, {
     constraint: true, //Garantir integridade referencial
-    foreignKey: 'IDLoc'
+    foreignKey: 'IDInfo'
 });
 
 // Exportando essa tabela

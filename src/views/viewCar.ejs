@@ -13,7 +13,7 @@
         <title>Avaliação</title>
     </head>
     
-    <body onload="updateMarker(<%= car['Coordinate.Latitude'] %>, <%= car['Coordinate.Longitude'] %>)">
+    <body onload="updateMarker(<%= car['CarInfo.Latitude'] %>, <%= car['CarInfo.Longitude'] %>)">
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
@@ -64,14 +64,6 @@
             <div class="modal-header">
             <h5 class="modal-title" id="exampleModalLabel">TEM CERTEZA QUE DESEJA EXCLUIR ESSE CHAMADO?</h5>
             </div>
-
-            <!-- <script>
-                console.log("user" + <%= idUser%>)
-                console.log("user" + <%= car.IDVehicle%>)
-            </script> -->
-
-            <h1>edhcbhejgfrjcwgerifgb  <%=idUser %> </h1>
-            <h1><%= car.IDVehicle%></h1>
             <form action="/carDelete/<%= idUser %>/<%= car.IDVehicle %>" method="post">
 
                 <div class="modal-body d-flex justify-content-center">
@@ -82,8 +74,8 @@
                     </svg>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-danger w-50" data-dismiss="modal">CANCELAR</button>
-                    <button type="submit" class="btn btn-secondary w-50">EXCLUIR</button>
+                    <button type="button" class="btn btn-secondary w-50" data-dismiss="modal">CANCELAR</button>
+                    <button type="submit" class="btn btn-danger w-50">EXCLUIR</button>
                 </div>
             </form>
         </div>
@@ -92,10 +84,10 @@
 
     <header>
         <div class="d-flex align-items-center p-3 border-bottom shadow">
-            <a href="/">
+            <a href="/userCars/<%= idUser %>">
                 <div class="d-flex align-items-center">
                     <h5 id="systemName" class="my-0 mr-md-auto">
-                        Seu carro
+                        Voltar
                     </h5>
                 </div>
             </a>
@@ -105,6 +97,19 @@
     <main>
 
         <div id="map"></div>
+
+        <div>
+            <h2><%= car.Brand %></h2>
+            <h2><%= car.Model %></h2>
+            <h2><%= car.Plate %></h2>
+            <h2><%= car.Year %></h2>
+
+            <p>Year: <%= car['CarInfo.Kms'] %></p>
+            <p>Gasolina (Litros): <%= car['CarInfo.Gas'] %></p>
+            <p>Nível de Óleo: <%= car['CarInfo.Oil'] ? 'Ok': 'Baixo' %></p>
+            <p>Temperatura: <%= car['CarInfo.Temperature'] %>°</p>
+            <p>Bateria: <%= car['CarInfo.Battery'] %></p>
+        </div>
 
         <!-- <button
             data-toggle="modal" data-target="#modalEdit"

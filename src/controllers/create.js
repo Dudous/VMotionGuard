@@ -56,7 +56,8 @@ module.exports = {
         Plate: data.plate,
         Brand : data.brand,
         Model: data.model,
-        Year: data.year
+        Year: data.year,
+        IDInfo: 1
         });
 
         res.redirect('/');

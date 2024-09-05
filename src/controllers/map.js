@@ -1,4 +1,4 @@
-const coordinates = require('../models/coordinates')
+const coordinates = require('../models/carInfo')
 
 module.exports = {
     

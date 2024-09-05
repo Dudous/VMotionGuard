@@ -1,7 +1,7 @@
 const vehicle = require('../models/vehicles');
 const user = require('../models/users');
-const coordinates = require('../models/coordinates')
-const DataBase = require('../config/db')
+const DataBase = require('../config/db');
+const carInfo = require('../models/carInfo');
 
 module.exports = {
 
@@ -16,7 +16,7 @@ module.exports = {
         })
         const vehiclesUser = await vehicle.findAll({
             raw: true,
-            attributes: ['IDVehicle', 'Plate', 'Brand', 'Model', 'Year', 'IDUser', 'IDLoc'],
+            attributes: ['IDVehicle', 'Plate', 'Brand', 'Model', 'Year', 'IDUser', 'IDInfo'],
             where: {IDUser: id}})
 
         const users = await user.findAll({
@@ -25,7 +25,7 @@ module.exports = {
             
         const vehicles = await vehicle.findAll({
             raw: true,
-            attributes: ['IDVehicle', 'Plate', 'Brand', 'Model', 'Year', 'IDUser', 'IDLoc']})
+            attributes: ['IDVehicle', 'Plate', 'Brand', 'Model', 'Year', 'IDUser', 'IDInfo']})
 
         if(login.IsAdmin == 1)
             res.render('../views/homePageAdmin',{id, login, users, vehicles});
@@ -54,12 +54,14 @@ module.exports = {
         const car = await vehicle.findOne({
             raw: true,
             attributes: ['IDVehicle', 'Plate', 'Brand', 'Model', 'Year'],
-            include: [{model: coordinates,
+            include: [{model: carInfo,
                 required: false,
-                attributes: ['Latitude', 'Longitude']
+                attributes: ['Latitude', 'Longitude', 'KMs', 'Gas', 'Oil', 'Temperature', 'Battery']
             }],
             where: {IDVehicle : req.params.id}
         });
+
+        console.log(car);
 
         res.render('../views/viewCar', {idUser, car});
     },
@@ -91,7 +93,7 @@ module.exports = {
 
         const vehicles = await vehicle.findAll({
             raw: true,
-            attributes: ['IDVehicle', 'Plate', 'Brand', 'Model', 'Year', 'IDUser', 'IDLoc']})
+            attributes: ['IDVehicle', 'Plate', 'Brand', 'Model', 'Year', 'IDUser', 'IDInfo']})
 
         const users = await user.findAll({
             raw: true,
@@ -127,7 +129,7 @@ module.exports = {
 
         const vehicles = await vehicle.findAll({
             raw: true,
-            attributes: ['IDVehicle', 'Plate', 'Brand', 'Model', 'Year', 'IDUser', 'IDLoc'],
+            attributes: ['IDVehicle', 'Plate', 'Brand', 'Model', 'Year', 'IDUser', 'IDInfo'],
             where: {IDUser: idUser}
         });
 

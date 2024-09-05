@@ -1,4 +1,3 @@
-const coordinates = require('../models/coordinates')
 const vehicle = require('../models/vehicles')
 const user = require('../models/users')
 
