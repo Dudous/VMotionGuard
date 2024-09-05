@@ -138,10 +138,9 @@ module.exports = {
         res.render('../views/userCars', {idUser, vehicles});
     },
 
-     async informacoesContaAdmin(req, res) {
+     async myAccount(req, res) {
 
         const id = req.params.id;
-        const admin = req.params.admin;
 
         const currentUser = await user.findOne({
             raw: true,
@@ -149,7 +148,7 @@ module.exports = {
             where: {IDUser : id}
         })
        
-        res.render('../views/informacoesUsers',{currentUser, admin});
+        res.render('../views/minhaConta',{currentUser, id});
     },
 
 }

@@ -36,7 +36,7 @@ route.post('/informacoesUsers/:id/:admin', update.editarUser)
 
 route.get('/allCars/:id', read.allCars);
 
-route.get('/contaAdmin/:id', read.informacoesContaAdmin);
-route.post('/informacoesUsers/:id/:admin', update.editarUser)
+route.get('/minhaConta/:id', read.myAccount);
+route.post('/minhaConta/:id', update.editarMinhaConta);
 
 module.exports = route;

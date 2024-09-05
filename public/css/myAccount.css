@@ -1,0 +1,167 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+body {
+    background-color: black !important;
+    font-family: "Roboto", system-ui;
+    font-weight: 400;
+    font-style: normal;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.content{
+    padding: 4%;
+}
+a{
+    color: white;
+    text-decoration: none !important;
+}
+a:hover{
+    color: gray !important;
+}
+
+.navegacao {
+    width: 100%; /* Ocupa toda a largura da tela */
+}
+
+.navegacao
+{
+    display: flex;
+}
+.navegar
+{
+    display: flex;
+    flex-direction: column !important;
+}
+
+.navbar {
+    height: 60px; 
+}
+
+.navbar-brand {
+    font-size: 1.5rem; 
+}
+
+.navbar-nav .nav-link {
+    padding: 15px; 
+}
+
+.title-gerenciamento {
+ 
+
+    padding: 7px;
+    border-radius: 10px;
+    font-size: 20px;
+    text-align: center;
+}
+
+
+main {
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    margin: 10px;
+    flex: 1;
+}
+
+form{
+    color: black;
+    background-color: white;
+    margin: 10px !important;
+    padding: 20px;
+    border-radius: 10px;
+}
+.controler input
+{
+    margin: 5px !important;
+}
+#userCPF
+{
+    cursor: not-allowed;
+    color: gray;
+}
+
+#userID
+{
+    width: 20%;
+}
+
+form input{
+    border-radius: 5px;
+}
+form button{
+    margin: 10px;
+    display: flex;
+}
+
+
+footer {
+    background-color: blue;
+    padding: 20px; 
+    width: 100%; 
+    box-sizing: border-box; 
+    text-align: center; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20%;
+}
+
+.icon {
+    max-width: 30px;
+}
+
+@media (max-width: 719px) {
+
+    header .navegacao {
+        display: none; 
+    }
+
+}
+
+@media (min-width: 620px) {
+    main {
+        display: grid;
+        /* grid-template-columns: repeat(4, 140px);  */
+        grid-template-rows: auto; 
+        gap: 20px; 
+        justify-content: center; 
+        margin: 60px;
+        flex: 1; 
+    }
+    hr{
+        height: 20px;
+    }
+    header .navegacao {
+        display: block; 
+    }
+    footer {
+        display: none; 
+    }
+    #searchBar
+    {
+        width:70%;
+    }
+    
+}
+
+
+
+
+
+
+
+
+

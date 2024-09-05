@@ -46,6 +46,39 @@ module.exports = {
 
         }
 
+
         res.redirect('/homePageAdmin/' + admin);
-    }
+    },
+
+    async editarMinhaConta(req, res){
+
+        const data = req.body;
+        const id = req.params.id;
+
+
+            await user.update({
+                Name: data.userName,
+                Email: data.userEmail, 
+                Password: data.userPassword
+            },
+            {
+                where: { IDUser: id }
+            });
+
+            const currentUser = await user.findOne({
+                raw: true,
+                attributes: ['IDUser', 'Name', 'CPF', 'Email', 'Password', 'IsAdmin'],
+                where: {IDUser : id}
+            })
+
+            if(currentUser.IsAdmin == 1)
+                {
+                    res.redirect('/homePageAdmin/' + currentUser.IDUser);
+                }
+                else{
+
+                    res.redirect('/homePageUser/' + currentUser.IDUser);
+                }
+
+         }
 }
