@@ -7,6 +7,7 @@ const create = require('./src/controllers/create');
 const del = require('./src/controllers/delete');
 const read = require('./src/controllers/read');
 const update = require('./src/controllers/update');
+const login = require('./src/controllers/login');
 
 // route.put('/:latitude/:longitude', map.attMap);
 
@@ -19,6 +20,8 @@ route.get('/userCars/:user', read.userCar);
 
 route.get('/car/:user/:id', read.vehicle);
 route.post('/carDelete/:user/:id', del.vehicle);
+
+route.get('/forgotPass/:mail', login.forgotPassword)
 
 route.post('/car:id', create.vehicle);
 route.patch('/car/:id', update.vehicle);

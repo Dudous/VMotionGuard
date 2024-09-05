@@ -2,8 +2,6 @@ const vehicle = require('../models/vehicles');
 const user = require('../models/users');
 const coordinates = require('../models/coordinates')
 const DataBase = require('../config/db')
-const { raw } = require('express');
-const { attMap } = require('./map');
 
 module.exports = {
 
@@ -37,8 +35,8 @@ module.exports = {
 
     async login(req, res) {
 
-        const notFound = '';
-        const incorrect = "";
+        const notFound = null;
+        const incorrect = null;
 
         res.render('../views/index', {notFound, incorrect});
     },
