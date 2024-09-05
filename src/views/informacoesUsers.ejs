@@ -53,12 +53,12 @@
                 </div>
 
                 <div class="col-12">
-                    <label for="inputAddress" class="form-label">Permição</label>
+                    <label for="inputAddress" class="form-label">Permissão</label>
                     <input type="text" class="form-control" id="userAllow" value="<%= currentUser.IsAdmin == 1? "Administrador" : "Usuário" %>" readonly >
                 </div>
 
                 <div class="col-12 controler">
-                    <input class="btn btn-primary" value="Promover a administrador" onclick="updateUser()" style="width: 260px;" readonly/>
+                    <input class="btn btn-primary" value="Alterar Permissão" onclick="updateUser()" style="width: 260px;" readonly/>
                     <a href="/homePageAdmin/<%=admin%>" class="btn btn-danger">Cancelar</a>
                     <input class="btn btn-primary" value="Pronto" type="submit"/>
                 </div>
