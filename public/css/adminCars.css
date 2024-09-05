@@ -91,6 +91,14 @@ main {
     flex: 1;
 }
 
+#carros
+{
+    margin: 0;
+    padding: 0;
+    background-color: transparent !important;
+    border: none;
+}
+
 header img {
     height: 100px !important;
     width: auto;

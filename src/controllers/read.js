@@ -136,4 +136,18 @@ module.exports = {
         res.render('../views/userCars', {idUser, vehicles});
     },
 
+     async informacoesContaAdmin(req, res) {
+
+        const id = req.params.id;
+        const admin = req.params.admin;
+
+        const currentUser = await user.findOne({
+            raw: true,
+            attributes: ['IDUser', 'Name', 'CPF', 'Email', 'Password', 'IsAdmin'],
+            where: {IDUser : id}
+        })
+       
+        res.render('../views/informacoesUsers',{currentUser, admin});
+    },
+
 }
