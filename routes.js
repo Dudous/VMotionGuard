@@ -7,6 +7,7 @@ const create = require('./src/controllers/create');
 const del = require('./src/controllers/delete');
 const read = require('./src/controllers/read');
 const update = require('./src/controllers/update');
+const login = require('./src/controllers/login');
 
 // route.put('/:latitude/:longitude', map.attMap);
 
@@ -21,6 +22,8 @@ route.get('/homePageUser/:id', read.home)
 route.get('/userCars/:user', read.userCar); // abrir carros
 route.get('/car/:user/:id', read.vehicle); // abrir carro específico
 route.post('/carDelete/:user/:id', del.vehicle);
+
+route.get('/forgotPass/:mail', login.forgotPassword)
 
 route.post('/car/:id', create.vehicle);
 route.patch('/car/:id', update.vehicle);

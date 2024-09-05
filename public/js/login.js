@@ -30,3 +30,4 @@ function formatCPF(cpfField) {
 
     cpfField.value = formattedCPF; 
 }
+
