@@ -46,16 +46,17 @@
     
             <% for(let i = 0; i < users.length; i++) {%>
     
-                     <div class="cards-admin">
-                         <div class="card-header">
-                             <img class="icon" src="/img/user.png" alt="">
-                             <h1 style="margin: 7px;" > <%=users[i].Name%></h1>
-                             <form action="/informacoesUsers/<%=users[i].IDUser%>/<%=login.IDUser%>" method="get">
-                                <button id="redirecionar" type="submit" ><img class="icon" src="/img/avançar-light.png" alt=""></button>
-                            </form>
-                        </div>
-                    </div>
-                 </form>
+                <form action="/informacoesUsers/<%=users[i].IDUser%>/<%=login.IDUser%>" method="get">
+                     <button class="admin-cards-button" >
+                         <div class="cards-admin">
+                             <div class="card-header">
+                                 <img class="icon" src="/img/user.png" alt="">
+                                 <h1 style="margin: 7px;" > <%=users[i].Name%></h1>
+                                   <img id="redirecionar" class="icon" src="/img/avançar-light.png" alt="">
+                                </div>
+                            </div>
+                        </button>
+                    </form>
     
             <% } %>
         </div>
