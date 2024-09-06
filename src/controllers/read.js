@@ -2,7 +2,7 @@ const vehicle = require('../models/vehicles');
 const user = require('../models/users');
 const DataBase = require('../config/db');
 const carInfo = require('../models/carInfo');
-const { Op } = require('sequelize')
+const { Op } = require('sequelize');
 
 module.exports = {
 
@@ -151,5 +151,12 @@ module.exports = {
        
         res.render('../views/minhaConta',{currentUser, id});
     },
+
+    async recuperarSenha(req, res) {
+
+        let naoEncontrado = null;
+
+        res.render('../views/recuperarSenha',{naoEncontrado})
+    }
 
 }

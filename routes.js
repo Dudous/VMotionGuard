@@ -23,8 +23,6 @@ route.get('/userCars/:user', read.userCar); // abrir carros
 route.get('/car/:user/:id', read.vehicle); // abrir carro específico
 route.post('/carDelete/:user/:id', del.vehicle);
 
-route.get('/forgotPass/:mail', login.forgotPassword)
-
 route.post('/car/:id', create.vehicle);
 route.patch('/car/:id', update.vehicle);
 
@@ -41,5 +39,10 @@ route.get('/allCars/:id', read.allCars);
 
 route.get('/minhaConta/:id', read.myAccount);
 route.post('/minhaConta/:id', update.editarMinhaConta);
+
+route.get('/recuperarSenha', read.recuperarSenha)
+route.post('/recuperarSenha', login.recuperarSenha)
+route.post('/codigoSenha', login.validateCode)
+route.post('/novaSenha', login.novaSenha)
 
 module.exports = route;
