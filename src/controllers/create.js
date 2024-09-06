@@ -86,6 +86,7 @@ module.exports = {
         await user.create({
             CPF: data.CPF.replace(/[-.]/g, ''),
             Name: data.name,
+            Telefone: data.telefone,
             Email: data.email,
             Password: cryptoPass,
             IsAdmin: 0
