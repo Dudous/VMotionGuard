@@ -44,8 +44,10 @@ module.exports = {
 
     
     async registerUser(req, res){
+
+        const cpfExiste = null;
     
-        res.render('../views/registerUser');
+        res.render('../views/registerUser', {cpfExiste});
     },
     
     async vehicle(req, res){
@@ -61,8 +63,6 @@ module.exports = {
             }],
             where: {IDVehicle : req.params.id}
         });
-
-        console.log(car);
 
         res.render('../views/viewCar', {idUser, car});
     },

@@ -27,6 +27,7 @@ module.exports = {
                     res.redirect('/homePageAdmin/' + login.IDUser);
                 }
                 else{
+
                     res.redirect('/homePageUser/' + login.IDUser);
                 }
                 
@@ -80,18 +81,36 @@ module.exports = {
     async user(req, res){
 
         const data = req.body;
+        console.log(data)
+        const cpf = data.CPF.replace(/[-.]/g, '');
+        console.log(typeof(data.userPassword));
 
-        var cryptoPass = createHmac('sha256', data.password).digest('hex')
-
-        await user.create({
-            CPF: data.CPF.replace(/[-.]/g, ''),
-            Name: data.name,
-            Telefone: data.telefone,
-            Email: data.email,
-            Password: cryptoPass,
-            IsAdmin: 0
+        const cpfExiste = await user.findOne({
+            where: { CPF: cpf },
+            raw: true, 
+            attributes: ['IDUser', 'CPF', 'Name', 'Email', 'Password', 'IsAdmin']
         });
 
-        res.redirect('/')
+        if(cpfExiste)
+        {
+            const cpfExiste = "O cpf já existe, por favor faça login"
+            return res.render('../views/registerUser', {cpfExiste});
+        }
+        else{
+
+            var cryptoPass = createHmac('sha256', data.userPassword).digest('hex')
+
+            await user.create({
+                CPF: data.CPF.replace(/[-.]/g, ''),
+                Name: data.name,
+                Telefone: data.telefone,
+                Email: data.email,
+                Password: cryptoPass,
+                IsAdmin: 0
+            });
+    
+            res.redirect('/')
+        }
+
     }
 }

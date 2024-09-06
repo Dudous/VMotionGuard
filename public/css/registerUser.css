@@ -187,15 +187,15 @@ button:hover{
     background-color: rgb(22, 22, 153) !important;
 }
 
-.criarConta {
+.fazerLogin {
     display: flex;
     justify-content: end;
     align-items: center; 
     font-size: 13px;
-    margin-top: 5%;
+    margin-top: 2%;
 }
 
-.criarConta p {
+.fazerLogin p {
     margin: 0; /
 }
 

@@ -1,6 +1,7 @@
 function validateForm() {
     const emailConfirm = document.getElementById("userEmailConfirm");
     const email = document.getElementById("userEmail");
+    const cpf = document.getElementById("userCPF")
     const password = document.getElementById("userPassword");
     const passwordConfirm = document.getElementById("userPasswordConfirm");
     
@@ -15,6 +16,11 @@ function validateForm() {
             alert("As senhas não conferem");
             return false;
         }
+    if(cpf.value.length < 14)
+    {
+        alert("o CPF precisa ter 11 dígitos")
+        return false;
+    }
 };
 
 
