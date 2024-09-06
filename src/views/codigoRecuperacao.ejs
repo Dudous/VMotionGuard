@@ -25,7 +25,7 @@
         <h1>Recuperação de senha</h1>
         <p>Um código de verificação será enviado para seu WhattsApp:</p>
 
-        <form action="/codigoSenha" method="post">
+        <form action="/codigoSenha/<%= id %>" method="post">
             <div class="code-container">
                 <input name="code" value="<%=code%>" hidden></p>
                 <input name="input1" type="text" class="code-input" maxlength="1" oninput="moveToNext(this, 'input2')" id="input1">

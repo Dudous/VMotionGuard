@@ -42,7 +42,7 @@ route.post('/minhaConta/:id', update.editarMinhaConta);
 
 route.get('/recuperarSenha', read.recuperarSenha)
 route.post('/recuperarSenha', login.recuperarSenha)
-route.post('/codigoSenha', login.validateCode)
+route.post('/codigoSenha/:id', login.validateCode)
 route.post('/novaSenha', login.novaSenha)
 
 module.exports = route;
