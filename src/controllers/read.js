@@ -2,7 +2,8 @@ const vehicle = require('../models/vehicles');
 const user = require('../models/users');
 const DataBase = require('../config/db');
 const carInfo = require('../models/carInfo');
-const { Op } = require('sequelize')
+const { Op } = require('sequelize');
+const { stringify } = require('querystring');
 
 module.exports = {
 
@@ -15,15 +16,17 @@ module.exports = {
             attributes: ['IDUser', 'Name', 'CPF', 'Email', 'Password', 'IsAdmin'],
             where: {IDUser : id}
         })
-        const vehiclesUser = await vehicle.findAll({
+        let vehiclesUser = await vehicle.findAll({
             raw: true,
-            attributes: ['IDVehicle', 'Plate', 'Brand', 'Model', 'Year', 'IDUser', 'IDInfo'],
+            attributes: ['IDVehicle', 'Plate', 'Brand', 'Model', 'Year', 'IDUser', 'Latitude', 'Longitude', 'KMs', 'Gas', 'Oil', 'Temperature', 'Battery', 'water'],
             where: {IDUser: id}})
 
+            // vehiclesUser = JSON.stringify(vehiclesUser);
             
         const vehicles = await vehicle.findAll({
             raw: true,
-            attributes: ['IDVehicle', 'Plate', 'Brand', 'Model', 'Year', 'IDUser', 'IDInfo']})
+            attributes: ['IDVehicle', 'Plate', 'Brand', 'Model', 'Year', 'IDUser', 'Latitude', 'Longitude', 'KMs', 'Gas', 'Oil', 'Temperature', 'Battery', 'water']})
+        
 
         if(login.IsAdmin == 1){
             const users = await user.findAll({
@@ -116,11 +119,7 @@ module.exports = {
             inner join vehicles as v
             ON u.IDUser = v.IDUser;
             `, {type: DataBase.SELECT, raw: true});
-
-            console.log(results)
-            console.log( 'resultado 1' + JSON.stringify(results[0][1]))
             
-
         res.render('../views/allCars', {vehicles, users, results, id});
     },
 

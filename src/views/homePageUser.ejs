@@ -11,6 +11,7 @@
     <title>Home</title>
 </head>
 <body>
+
     <header>
         <div class="navegacao">
             <div class="collapse" id="navbarToggleExternalContent">
@@ -34,8 +35,8 @@
             <p class="hello">Olá, <%=login.Name %></p>
             <img class="car" src="/img/gol.png" alt="">
         </div>
-
     </header>
+    
     <main>
         <div class="cards master">
             <div class="card-header">
@@ -44,17 +45,26 @@
                 </div>
             </div>
             <div class="card-content">
-                <p>333,33 KM</p>
+                <p> 
+                  <%= vehiclesUser && vehiclesUser.length > 0 ? vehiclesUser[0].KMs + ' KM' : "AINDA NÃO HÁ DADOS" %> 
+                </p>
             </div>
         </div>
 
         <div class="cards">
             <div class="card-header">
                 <img class="icon" src="/img/saúde.png" alt="">
-                <h1>SAÚDE ELÉTRICA</h1>
+                <h1>SAÚDE DA BATERIA</h1>
             </div>
             <div class="card-content">
-                <p>Saudável</p>
+                <p>
+                  <%= vehiclesUser && vehiclesUser.length > 0 ? 
+                      vehiclesUser[0].Battery >= 12.6 ? "COMPLETAMENTE SAUDÁVEL" :
+                      vehiclesUser[0].Battery >= 12.4 ? "SAUDÁVEL" :
+                      vehiclesUser[0].Battery >= 12.2 ? "ATENÇÃO, BATERIA BAIXA" :
+                      "BATERIA PRECISA SER SUBSTITUÍDA" : "AINDA NÃO HÁ DADOS" 
+                  %>
+                </p>
             </div>
             <button type="submit" class="details">detalhes</button>
         </div>
@@ -65,7 +75,9 @@
                 <h1>GASOLINA</h1>
             </div>
             <div class="card-content">
-                <p>33L</p>
+                <p>
+                  <%= vehiclesUser && vehiclesUser.length > 0 && vehiclesUser[0].Gas !== undefined ? vehiclesUser[0].Gas + "L" : "AINDA NÃO HÁ DADOS" %> 
+                </p>
             </div>
             <button type="submit" class="details">detalhes</button>
         </div>
@@ -76,7 +88,12 @@
                 <h1>ÓLEO</h1>
             </div>
             <div class="card-content">
-                <p>NÍVEL ALTO</p>
+                <p>
+                  <%= vehiclesUser && vehiclesUser.length > 0 && vehiclesUser[0].Oil !== undefined ? 
+                      vehiclesUser[0].Oil > 1.5 ? "NÍVEL OK" : "PRECISA REPOR" 
+                      : "AINDA NÃO HÁ DADOS" 
+                  %>
+                </p>
             </div>
             <button type="submit" class="details">detalhes</button>
         </div>
@@ -87,7 +104,13 @@
                 <h1>ÁGUA</h1>
             </div>
             <div class="card-content">
-                <p>NÍVEL MÉDIO</p>
+                <p>
+                  <%= vehiclesUser && vehiclesUser.length > 0 && vehiclesUser[0].water !== undefined ? 
+                      vehiclesUser[0].water > 2.5 ? "NÍVEL ALTO" : 
+                      vehiclesUser[0].water > 1.5 ? "NÍVEL MÉDIO" : "NÍVEL BAIXO" 
+                      : "AINDA NÃO HÁ DADOS" 
+                  %>
+                </p>
             </div>
             <button type="submit" class="details">detalhes</button>
         </div>
