@@ -11,8 +11,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "apigratis-sdk-nodejs": "^0.1.6",
     "ejs": "^3.1.10",
     "express": "^4.19.2",
+    "jquery": "^3.7.1",
     "mssql": "^11.0.1",
     "nodemailer": "^6.9.15",
     "nodemon": "^3.1.4",
