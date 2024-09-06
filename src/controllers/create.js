@@ -22,12 +22,10 @@ module.exports = {
 
                 if(login.IsAdmin == 1)
                 {
-                    console.log("oi")
                     res.redirect('/homePageAdmin/' + login.IDUser);
                 }
                 else{
 
-                    console.log("tcahua")
                     res.redirect('/homePageUser/' + login.IDUser);
                 }
                 
@@ -84,17 +82,31 @@ module.exports = {
     async user(req, res){
 
         const data = req.body;
+        const cpf = data.CPF.replace(/[-.]/g, '');
 
-        // implementar criptografia de senhas
-
-        await user.create({
-            CPF: data.CPF.replace(/[-.]/g, ''),
-            Name: data.name,
-            Email: data.email,
-            Password: data.userPassword,
-            IsAdmin: 0
+        const cpfExiste = await user.findOne({
+            where: { CPF: cpf },
+            raw: true, 
+            attributes: ['IDUser', 'CPF', 'Name', 'Email', 'Password', 'IsAdmin']
         });
 
-        res.redirect('/')
+        if(cpfExiste)
+        {
+            const cpfExiste = "O cpf já existe, por favor faça login"
+            return res.render('../views/registerUser', {cpfExiste});
+        }
+        else{
+
+            await user.create({
+                CPF: data.CPF.replace(/[-.]/g, ''),
+                Name: data.name,
+                Email: data.email,
+                Password: data.userPassword,
+                IsAdmin: 0
+            });
+    
+            res.redirect('/')
+        }
+
     }
 }
