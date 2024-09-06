@@ -1,5 +1,6 @@
 const vehicle = require('../models/vehicles')
 const user = require('../models/users');
+const { createHmac } = require('node:crypto');
 
 module.exports = {
 
@@ -16,9 +17,10 @@ module.exports = {
         });
         
         if (login) {
+
+            var cryptoPass = createHmac('sha256', data.senhaInput).digest('hex')
         
-            if (login.CPF == cpf && login.Password == data.senhaInput){
-                console.log(typeof(login.IsAdmin))
+            if (login.CPF == cpf && login.Password == cryptoPass){
 
                 if(login.IsAdmin == 1)
                 {
@@ -42,9 +44,6 @@ module.exports = {
     },
 
     async home(req, res){
-
-        const data = req.body
-        const mode = data.mode
 
         res.redirect('/');
     },
@@ -97,11 +96,13 @@ module.exports = {
         }
         else{
 
+            var cryptoPass = createHmac('sha256', data.password).digest('hex')
+
             await user.create({
                 CPF: data.CPF.replace(/[-.]/g, ''),
                 Name: data.name,
                 Email: data.email,
-                Password: data.userPassword,
+                Password: cryptoPass,
                 IsAdmin: 0
             });
     
