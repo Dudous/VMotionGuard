@@ -81,7 +81,9 @@ module.exports = {
     async user(req, res){
 
         const data = req.body;
+        console.log(data)
         const cpf = data.CPF.replace(/[-.]/g, '');
+        console.log(typeof(data.userPassword));
 
         const cpfExiste = await user.findOne({
             where: { CPF: cpf },
@@ -96,7 +98,7 @@ module.exports = {
         }
         else{
 
-            var cryptoPass = createHmac('sha256', data.password).digest('hex')
+            var cryptoPass = createHmac('sha256', data.userPassword).digest('hex')
 
             await user.create({
                 CPF: data.CPF.replace(/[-.]/g, ''),
