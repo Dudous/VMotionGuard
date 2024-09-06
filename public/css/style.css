@@ -12,12 +12,6 @@ body{
     color: white !important;
     scale: 0.9;
 }
-body.light-mode
-{
-    background-color: white !important;
-    color: black !important;
-}
-
 :placeholder-shown.dark-mode
 {
     color: black !important;

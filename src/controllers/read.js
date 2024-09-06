@@ -2,6 +2,7 @@ const vehicle = require('../models/vehicles');
 const user = require('../models/users');
 const DataBase = require('../config/db');
 const carInfo = require('../models/carInfo');
+const { Op } = require('sequelize')
 
 module.exports = {
 
@@ -19,17 +20,17 @@ module.exports = {
             attributes: ['IDVehicle', 'Plate', 'Brand', 'Model', 'Year', 'IDUser', 'IDInfo'],
             where: {IDUser: id}})
 
-        const users = await user.findAll({
-            raw: true,
-            attributes: ['IDUser', 'Name', 'CPF', 'Email', 'Password', 'IsAdmin']})
             
         const vehicles = await vehicle.findAll({
             raw: true,
             attributes: ['IDVehicle', 'Plate', 'Brand', 'Model', 'Year', 'IDUser', 'IDInfo']})
 
-        if(login.IsAdmin == 1)
+        if(login.IsAdmin == 1){
+            const users = await user.findAll({
+                raw: true,
+                attributes: ['IDUser', 'Name', 'CPF', 'Email', 'Password', 'IsAdmin'], where: { IDUser: { [Op.ne]: id }}});
             res.render('../views/homePageAdmin',{id, login, users, vehicles});
-        else
+        } else
             res.render('../views/homePageUser',{vehiclesUser, login});
     },
 

@@ -1,0 +1,58 @@
+body.light-mode
+{
+    background-color: antiquewhite !important;
+    color: black !important;
+}
+
+body.light-mode #searchBar{
+color: white;
+   background-color: black;
+}
+
+body.light-mode .cards-admin {
+    background-color: black;
+}
+
+body.light-mode .cards-admin:hover{
+    background-color: rgb(65, 62, 62);
+}
+
+
+body.light-mode .title-gerenciamento {
+    color: black;
+}
+
+.modeCenter
+{
+    top: 0;
+    left: 0;
+    margin: 10px; 
+    cursor: pointer;
+}
+
+.mode{
+    background-color: rgb(22, 15, 15);
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 3px;
+    border-radius: 100%;
+    
+}
+.mode:hover{
+    opacity: 0.8;
+}
+
+.mode img
+{
+    height: 100%;
+    width:auto;
+}
+
+.setModeIcon{
+    width: auto; 
+    height: 20px !important;
+}
+
