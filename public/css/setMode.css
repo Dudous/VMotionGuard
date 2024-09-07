@@ -22,6 +22,14 @@ body.light-mode .title-gerenciamento {
     color: black;
 }
 
+body.light-mode input::placeholder,
+body.light-mode textarea::placeholder {
+    color: #242222b4 !important;
+}
+.title-page{
+    color: black !important;
+}
+
 .modeCenter
 {
     top: 0;

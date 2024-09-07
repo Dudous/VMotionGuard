@@ -1,3 +1,4 @@
+/* Reset básico para margin e padding */
 html, body {
     height: 100%;
     margin: 0;
@@ -13,6 +14,7 @@ body {
     font-style: normal;
     display: flex;
     flex-direction: column;
+    color: white;
 }
 
 header {
@@ -21,47 +23,48 @@ header {
     flex-direction: column;
     align-items: center;
 }
-.content{
+
+.content {
     padding: 4%;
 }
-a{
+
+a {
     color: white;
     text-decoration: none !important;
 }
-a:hover{
+
+a:hover {
     color: gray !important;
 }
 
 .navegacao {
-    width: 100%; 
+    width: 100%;
 }
 
-.navegar
-{
+.navegar {
     display: flex;
     flex-direction: column !important;
 }
 
 .navbar {
-    height: 60px; 
+    height: 60px;
 }
 
 .navbar-brand {
-    font-size: 1.5rem; 
+    font-size: 1.5rem;
 }
 
 .navbar-nav .nav-link {
-    padding: 15px; 
+    padding: 15px;
 }
 
 .title-gerenciamento {
- 
-
     padding: 7px;
     border-radius: 10px;
     font-size: 20px;
     text-align: center;
 }
+
 .hello {
     background-color: blue;
     padding: 7px;
@@ -82,16 +85,22 @@ a:hover{
     font-size: 18px;
 }
 
-
 main {
-    display: grid;
-    /* grid-template-columns: repeat(2, 140px);  */
-    grid-template-rows: auto; 
-    gap: 20px; 
-    justify-content: center; 
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    justify-content: center;
     margin: 10px;
     flex: 1;
+    color: white;
+    text-align: center;
+    align-items: center;
 }
+
+main h1 {
+    margin: 0;
+}
+
 header img {
     height: 100px !important;
     width: auto;
@@ -99,18 +108,14 @@ header img {
     right: 0;
 }
 
-.modeCenter-mobile
-{
+.modeCenter-mobile {
     margin: 20px;
     padding: 0;
     align-self: flex-start;
-
 }
 
 .master {
-    grid-column: span 2; 
-    width: 300px !important; 
-    height: 140px; 
+    grid-column: span 2;
 }
 
 .title {
@@ -118,11 +123,10 @@ header img {
     padding: 3%;
     border-radius: 10px;
 }
+
 .cards-admin {
-    background-color: rgba(0, 0, 0, 0.896);
+    background-color: rgba(54, 53, 53, 0.896);
     color: white;
-    width: 300px;
-    height: 50px;
     border-radius: 10px;
     border: none;
     position: relative;
@@ -133,6 +137,11 @@ header img {
     box-sizing: border-box;
     padding-top: 10px;
     margin: 20px;
+    transition: background-color 0.3s ease;
+    width: 310px; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .card-header {
@@ -146,9 +155,9 @@ header img {
 
 .cards-admin img {
     max-width: 30px;
-    margin-left: 10px;
     align-self: end;
     cursor: pointer;
+    margin-right: 10px;
 }
 
 .cards-admin h1 {
@@ -156,7 +165,7 @@ header img {
     margin: 0;
     flex-grow: 1;
     text-align: left;
-    margin-left: 3px;
+    margin-left: 7px;
 }
 
 .card-content {
@@ -166,39 +175,50 @@ header img {
     align-items: center;
     width: 100%;
     margin-bottom: 40px;
+    margin-left: 10px;
+    justify-content: center;
+    align-items: center;
 }
 
 .cards-admin p {
     margin: 0;
 }
 
-.admin-cards-button
-{
+.admin-cards-button {
     display: flex;
     background-color: transparent;
     border: none;
 }
-
-/* .cards-admin button {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    padding: 7px;
-    border: none;
-    border-radius: 10px;
-    background-color: transparent;
-    width: 1%;
-    position: absolute;
-    bottom: 10px;
-    left: 97%;
-    transform: translateX(-50%);
-} */
 
 .cards-admin button img {
     max-width: 20px;
 }
 
-.cards-admin:hover{
+.adc-car {
+    border: none;
+    align-self: center;
+    height: 60px;
+    width: 130px;
+    border-radius: 10px;
+    background-color: orange;
+}
+
+.adc-car:hover {
+    background-color: rgb(146, 96, 5);
+}
+
+.adc-car a {
+    text-decoration: none;
+    color: white;
+}
+
+.center-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cards-admin:hover {
     background-color: rgb(69, 65, 65);
 }
 
@@ -206,8 +226,7 @@ header img {
     max-width: 30px;
 }
 
-#carros
-{
+#carros {
     margin: 0;
     padding: 0;
     background-color: transparent !important;
@@ -216,10 +235,10 @@ header img {
 
 footer {
     background-color: blue;
-    padding: 20px; 
-    width: 100%; 
-    box-sizing: border-box; 
-    text-align: center; 
+    padding: 20px;
+    width: 100%;
+    box-sizing: border-box;
+    text-align: center;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -227,90 +246,29 @@ footer {
 }
 
 .container {
-    flex-wrap: wrap; 
-    gap: 20px; 
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
 }
-
-.cards-admin {
-    flex: 1 1 calc(50% - 20px); 
-    box-sizing: border-box; 
-}
-
 
 @media (max-width: 719px) {
-
     header .navegacao {
-        display: none; 
+        display: none;
     }
-
 }
 
-
 @media (min-width: 719px) {
-
     header .navegacao {
         display: block;
     }
-    footer{
+
+    footer {
         display: none;
-    };
+    }
 }
 
-
-@media (min-width: 620px) {
-    /* main {
-        isplay: grid; 
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        grid-template-rows: auto; 
-        display: flex;
-        gap: 20px;
-        justify-content: center;
-        margin: 30px;
-        flex: 1;
-    } */
-
+@media (min-width: 700px) {
     .cards-admin {
-        
-        max-width: 500px; 
-    }
-
-    #searchBar {
-        width: 75%;
-    }
-    
-}
-
-
-@media (min-width: 690px) {
-    .cards-admin {
-        
-        width: 590px; 
-    }
-
-
-}
-
-@media (min-width: 1360px) {
-    main {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        grid-template-rows: auto;
-        gap: 10px;
-        justify-content: center;
-        margin: 20px;
-        flex: 1;
-    }
-
-    .cards-admin {
-        max-width: 400px;
-        margin: 0;
-    }
-
-    #searchBar {
-        width: 70%;
-    }
-    .container
-    {
-        display: flex;
+        width: calc(50% - 20px); 
     }
 }

@@ -48,6 +48,14 @@ header {
     height: 60px; 
 }
 
+.modeCenter-mobile
+{
+    margin: 20px;
+    padding: 0;
+    align-self: flex-start;
+
+}
+
 .navbar-brand {
     font-size: 1.5rem; 
 }
@@ -205,6 +213,10 @@ footer {
     header .navegacao {
         display: block; 
     }
+    .modeCenter-mobile
+{
+    display: none;
+}
     footer {
         display: none; 
     }
