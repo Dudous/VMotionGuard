@@ -26,7 +26,7 @@ body.light-mode input::placeholder,
 body.light-mode textarea::placeholder {
     color: #242222b4 !important;
 }
-.title-page{
+body.light-mode .title-page{
     color: black !important;
 }
 
@@ -64,3 +64,6 @@ body.light-mode textarea::placeholder {
     height: 20px !important;
 }
 
+.navbar.custom-shadow {
+    box-shadow: 0 20px 60px rgb(70 68 68 / 50%);
+}
