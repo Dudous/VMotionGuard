@@ -1,0 +1,164 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f9fa;
+    margin: 0;
+    padding: 0;
+}
+
+
+#map {
+    height: 500px;
+    width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin: 20px 0;
+}
+
+.navegacao {
+    width: 100%; 
+}
+
+.navbar {
+    height: 60px; 
+}
+
+.modeCenter-mobile
+{
+    margin: 20px;
+    padding: 0;
+    align-self: flex-start;
+
+}
+
+.navbar-brand {
+    font-size: 1.5rem; 
+}
+
+.navbar-nav .nav-link {
+    padding: 15px; 
+}
+
+.ancora {
+    text-decoration: none;
+    color: white;
+}
+
+.ancora:hover {
+    color: gray !important;
+}
+
+.links {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; 
+}
+
+.links a {
+    margin-bottom: 10px; 
+}
+
+
+main {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+main h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #343a40;
+}
+
+main p {
+    font-size: 1rem;
+    margin-bottom: 10px;
+    color: #495057;
+}
+
+
+.info-box {
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.info-box h3 {
+    font-size: 1.25rem;
+    margin-bottom: 10px;
+    color: #007bff;
+}
+
+.info-box p {
+    font-size: 1rem;
+    margin-bottom: 10px;
+    color: #333333;
+}
+
+/* Buttons */
+button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Modal */
+.modal-content {
+    border-radius: 8px;
+    padding: 20px;
+}
+
+.modal-header {
+    border-bottom: none;
+}
+
+.modal-footer {
+    border-top: none;
+}
+
+.modal-footer .btn {
+    border-radius: 4px;
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    color: white;
+}
+
+.btn-secondary:hover {
+    background-color: #5a6268;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    color: white;
+}
+
+.btn-danger:hover {
+    background-color: #c82333;
+}
+
+/* Icons */
+.bi-trash3-fill {
+    color: #dc3545;
+}
+
+@media (max-width: 720px) {
+    .navegacao
+    {
+        display: none;
+    }
+    
+}
+
