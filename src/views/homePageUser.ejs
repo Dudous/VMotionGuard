@@ -14,6 +14,26 @@
     <title>Home</title>
 </head>
 <body class='modeAtual'>
+
+  <!-- Modal -->
+        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                <p>AINDA NÃO HÁ DADOS</p>
+                </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">OK</button>
+                </div>
+            </div>
+            </div>
+        </div>
+
     <header>
 
         <div class="navegacao">
@@ -59,19 +79,32 @@
                 </div>
             </div>
             <div class="card-content">
-                <p>333,33 KM</p>
+                <p> 
+                    <%= vehiclesUser && vehiclesUser.length > 0 && vehiclesUser[0].KMs != undefined ? vehiclesUser[0].KMs + "L" : "AINDA NÃO HÁ DADOS" %> 
+                </p>
             </div>
         </div>
 
         <div class="cards">
             <div class="card-header">
                 <img class="icon" src="/img/saúde.png" alt="">
-                <h1>SAÚDE ELÉTRICA</h1>
+                <h1>SAÚDE DA BATERIA</h1>
             </div>
             <div class="card-content">
-                <p>Saudável</p>
+                <p>
+                    <%= 
+                    vehiclesUser && vehiclesUser.length > 0 ? 
+                    (vehiclesUser[0].Battery >= 12.6 ? "COMPLETAMENTE SAUDÁVEL" :
+                    vehiclesUser[0].Battery >= 12.4 ? "SAUDÁVEL" :
+                    vehiclesUser[0].Battery >= 12.2 ? "ATENÇÃO, BATERIA BAIXA" :
+                    vehiclesUser[0].Battery < 12.2 ? "BATERIA PRECISA SER SUBSTITUÍDA" :
+                    "AINDA NÃO HÁ DADOS") :
+                    "AINDA NÃO HÁ DADOS"
+                  %>
+                  
+                </p>
             </div>
-            <button type="submit" class="details">DETALHES</button>
+            <button type="submit" class="details" data-bs-toggle="modal" data-bs-target="#staticBackdrop">detalhes</button>
         </div>
 
         <div class="cards">
@@ -80,9 +113,11 @@
                 <h1>GASOLINA</h1>
             </div>
             <div class="card-content">
-                <p>33L</p>
+                <p>
+                  <%= vehiclesUser && vehiclesUser.length > 0 && vehiclesUser[0].Gas !== undefined ? vehiclesUser[0].Gas + "L" : "AINDA NÃO HÁ DADOS" %> 
+                </p>
             </div>
-            <button type="submit" class="details">DETALHES</button>
+            <button type="submit" class="details" data-bs-toggle="modal" data-bs-target="#staticBackdrop">detalhes</button>
         </div>
 
         <div class="cards">
@@ -91,9 +126,14 @@
                 <h1>ÓLEO</h1>
             </div>
             <div class="card-content">
-                <p>NÍVEL ALTO</p>
+                <p>
+                  <%= vehiclesUser && vehiclesUser.length > 0 && vehiclesUser[0].Oil !== undefined ? 
+                      vehiclesUser[0].Oil > 1.5 ? "NÍVEL OK" : "PRECISA REPOR" 
+                      : "AINDA NÃO HÁ DADOS" 
+                  %>
+                </p>
             </div>
-            <button type="submit" class="details">DETALHES</button>
+            <button type="submit" class="details" data-bs-toggle="modal" data-bs-target="#staticBackdrop">detalhes</button>
         </div>
 
         <div class="cards">
@@ -102,9 +142,15 @@
                 <h1>ÁGUA</h1>
             </div>
             <div class="card-content">
-                <p>NÍVEL MÉDIO</p>
+                <p>
+                  <%= vehiclesUser && vehiclesUser.length > 0 && vehiclesUser[0].water !== undefined ? 
+                      vehiclesUser[0].water > 2.5 ? "NÍVEL ALTO" : 
+                      vehiclesUser[0].water > 1.5 ? "NÍVEL MÉDIO" : "NÍVEL BAIXO" 
+                      : "AINDA NÃO HÁ DADOS" 
+                  %>
+                </p>
             </div>
-            <button type="submit" class="details">DETALHES</button>
+            <button type="submit" class="details" data-bs-toggle="modal" data-bs-target="#staticBackdrop">detalhes</button>
         </div>
     </main>
 
