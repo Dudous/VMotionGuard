@@ -19,7 +19,7 @@
         <div class="navegacao">
             <div class="collapse" id="navbarToggleExternalContent">
                 <div class="bg-dark p-4 navegar">
-                    <a href="" id="voltar" class="text-white h4 ancora">Voltar ao menu</a>
+                    <a href="" id="voltar" class="text-white h4 ancora">Menu</a>
                     <a href="/" class="text-white h4 ancora" style="margin-top: 5px;" >Logout</a>
                   <span class="text-muted">Toggleable via the navbar brand.</span>
                 </div>
@@ -69,11 +69,17 @@
                 </div>
         </form>
 
-    </main>
-
-    <hr>
-
-    <footer>
+        
+        
+      </main>
+      
+      <div class="logout" style="display: flex; align-items: center; justify-content: center;">
+        <a href="/"><button type="button" class="btn btn-primary">Logout</button></a>
+      </div>
+      
+      <hr>
+      
+      <footer>
       <a href="<%= currentUser.IsAdmin == 1 ? `/allCars/${id}` : `/userCars/${id}` %>"><img class="icon" src="/img/car.png"></a>
       <a href="#"><img class="icon" src="/img/notification.png"></a>
       <a href="<%= currentUser.IsAdmin == 1 ? `/homePageAdmin/${id}` : `/homePageUser/${id}` %>"><img class="icon" src="/img/home.png">

@@ -213,6 +213,17 @@ header img {
     background-color: transparent !important;
     border: none;
 }
+.modeCenter-mobile {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0; /* Alinha no topo da página */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+}
+
 
 footer {
     background-color: blue;
@@ -242,6 +253,10 @@ footer {
     header .navegacao {
         display: none; 
     }
+    .modeCenter-mobile
+    {
+        display: block;
+    }
 
 }
 
@@ -254,6 +269,10 @@ footer {
     footer{
         display: none;
     };
+    .modeCenter-mobile
+    {
+        display: none;
+    }
 }
 
 
@@ -276,6 +295,10 @@ footer {
 
     #searchBar {
         width: 75%;
+    }
+    .modeCenter-mobile
+    {
+        display: none;
     }
     
 }
@@ -312,5 +335,9 @@ footer {
     .container
     {
         display: flex;
+    }
+    .modeCenter-mobile
+    {
+        display: none;
     }
 }
