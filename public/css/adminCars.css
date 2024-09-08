@@ -202,6 +202,9 @@ footer {
     #searchBar {
         width: 70%;
     }
+    header .navegacao {
+        display: none;
+    }
 }
 
 @media (min-width: 498px) and (max-width: 729px) {

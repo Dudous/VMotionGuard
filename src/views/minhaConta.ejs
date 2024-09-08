@@ -74,9 +74,10 @@
     <hr>
 
     <footer>
-      <a href="/userCars/<%=id%>"><img class="icon" src="/img/car.png"></a>
+      <a href="<%= currentUser.IsAdmin == 1 ? `/allCars/${id}` : `/userCars/${id}` %>"><img class="icon" src="/img/car.png"></a>
       <a href="#"><img class="icon" src="/img/notification.png"></a>
-      <a href="/homePageUser/<%=id%>"><img class="icon" src="/img/home.png"></a>
+      <a href="<%= currentUser.IsAdmin == 1 ? `/homePageAdmin/${id}` : `/homePageUser/${id}` %>"><img class="icon" src="/img/home.png">
+    </a>
       <a href="#"><img class="icon" src="/img/user.png"></a>
     </footer>
 
