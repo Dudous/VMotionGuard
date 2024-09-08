@@ -92,15 +92,16 @@
             </div>
             <div class="card-content">
                 <p>
+                    
                     <%= 
                     vehiclesUser && vehiclesUser.length > 0 ? 
                     (vehiclesUser[0].Battery >= 12.6 ? "COMPLETAMENTE SAUDÁVEL" :
                     vehiclesUser[0].Battery >= 12.4 ? "SAUDÁVEL" :
                     vehiclesUser[0].Battery >= 12.2 ? "ATENÇÃO, BATERIA BAIXA" :
-                    vehiclesUser[0].Battery < 12.2 ? "BATERIA PRECISA SER SUBSTITUÍDA" :
-                    "AINDA NÃO HÁ DADOS") :
+                    "BATERIA PRECISA SER SUBSTITUÍDA") :
                     "AINDA NÃO HÁ DADOS"
                   %>
+                  
                   
                 </p>
             </div>
@@ -160,5 +161,8 @@
         <a href="#"><img class="icon" src="/img/home.png"></a>
         <a href="/minhaConta/<%=login.IDUser%>"><img class="icon" src="/img/user.png"></a>
  </footer>
+
+ <script>
+ </script>
 </body>
 </html>

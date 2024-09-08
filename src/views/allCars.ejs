@@ -46,8 +46,7 @@
     </header>
     <main id="userList">
 
-        <% for(let i = 0; i < results.length; i++) {
-            for(let j = 0; j < results[i].length; j++) {%>
+        <% for(let i = 0; i < vehicles.length; i++) {
 
                  <div class="cards-admin">
                      <div class="card-header">
@@ -55,13 +54,13 @@
                          <h1 style="margin: 7px;"> <%= results[i][j].Model%></h1>
                      </div>
                          <div class="card-content">
-                             <h1> Placa: <%= results[i][j].Plate %></h1>
-                             <h1> Ano: <%= results[i][j].Year %></h1>
-                             <h1> Dono: <%= results[i][j].Name%></h1>
+                             <h1> Placa: <%= vehicles[i].Plate %></h1>
+                             <h1> Ano: <%=  vehicles[i].Year %></h1>
+                             <h1> Dono: <%=  vehicles[i].Name%></h1>
                          </div>
                 </div>
 
-        <% }} %>
+        <% } %>
 
     </main>
 
