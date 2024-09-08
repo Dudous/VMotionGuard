@@ -80,7 +80,7 @@
             </div>
             <div class="card-content">
                 <p> 
-                    <%= vehiclesUser && vehiclesUser.length > 0 && vehiclesUser[0].KMs != undefined ? vehiclesUser[0].KMs + "L" : "AINDA NÃO HÁ DADOS" %> 
+                  <%= vehiclesUser && vehiclesUser[0].length > 0 ? vehiclesUser[0].KMs + ' KM' : "AINDA NÃO HÁ DADOS" %> 
                 </p>
             </div>
         </div>
@@ -92,20 +92,15 @@
             </div>
             <div class="card-content">
                 <p>
-                    
-                    <%= 
-                    vehiclesUser && vehiclesUser.length > 0 ? 
-                    (vehiclesUser[0].Battery >= 12.6 ? "COMPLETAMENTE SAUDÁVEL" :
-                    vehiclesUser[0].Battery >= 12.4 ? "SAUDÁVEL" :
-                    vehiclesUser[0].Battery >= 12.2 ? "ATENÇÃO, BATERIA BAIXA" :
-                    "BATERIA PRECISA SER SUBSTITUÍDA") :
-                    "AINDA NÃO HÁ DADOS"
+                  <%= vehiclesUser && vehiclesUser[0].length > 0 ? 
+                      vehiclesUser[0].Battery >= 12.6 ? "COMPLETAMENTE SAUDÁVEL" :
+                      vehiclesUser[0].Battery >= 12.4 ? "SAUDÁVEL" :
+                      vehiclesUser[0].Battery >= 12.2 ? "ATENÇÃO, BATERIA BAIXA" :
+                      "BATERIA PRECISA SER SUBSTITUÍDA" : "AINDA NÃO HÁ DADOS" 
                   %>
-                  
-                  
                 </p>
             </div>
-            <button type="submit" class="details" data-bs-toggle="modal" data-bs-target="#staticBackdrop">detalhes</button>
+            <button type="submit" class="details">detalhes</button>
         </div>
 
         <div class="cards">
@@ -115,10 +110,10 @@
             </div>
             <div class="card-content">
                 <p>
-                  <%= vehiclesUser && vehiclesUser.length > 0 && vehiclesUser[0].Gas !== undefined ? vehiclesUser[0].Gas + "L" : "AINDA NÃO HÁ DADOS" %> 
+                  <%= vehiclesUser && vehiclesUser[0].length > 0 && vehiclesUser[0].Gas !== undefined ? vehiclesUser[0].Gas + "L" : "AINDA NÃO HÁ DADOS" %> 
                 </p>
             </div>
-            <button type="submit" class="details" data-bs-toggle="modal" data-bs-target="#staticBackdrop">detalhes</button>
+            <button type="submit" class="details">detalhes</button>
         </div>
 
         <div class="cards">
@@ -128,13 +123,13 @@
             </div>
             <div class="card-content">
                 <p>
-                  <%= vehiclesUser && vehiclesUser.length > 0 && vehiclesUser[0].Oil !== undefined ? 
+                  <%= vehiclesUser && vehiclesUser[0].length > 0 && vehiclesUser[0].Oil !== undefined ? 
                       vehiclesUser[0].Oil > 1.5 ? "NÍVEL OK" : "PRECISA REPOR" 
                       : "AINDA NÃO HÁ DADOS" 
                   %>
                 </p>
             </div>
-            <button type="submit" class="details" data-bs-toggle="modal" data-bs-target="#staticBackdrop">detalhes</button>
+            <button type="submit" class="details">detalhes</button>
         </div>
 
         <div class="cards">
@@ -144,15 +139,17 @@
             </div>
             <div class="card-content">
                 <p>
-                  <%= vehiclesUser && vehiclesUser.length > 0 && vehiclesUser[0].water !== undefined ? 
+                  <%= vehiclesUser && vehiclesUser[0].length > 0 && vehiclesUser[0].water !== undefined ? 
                       vehiclesUser[0].water > 2.5 ? "NÍVEL ALTO" : 
                       vehiclesUser[0].water > 1.5 ? "NÍVEL MÉDIO" : "NÍVEL BAIXO" 
                       : "AINDA NÃO HÁ DADOS" 
                   %>
                 </p>
             </div>
-            <button type="submit" class="details" data-bs-toggle="modal" data-bs-target="#staticBackdrop">detalhes</button>
+            <button type="submit" class="details">detalhes</button>
         </div>
+
+        <button type="submit" id="troca" class="details" style="border-radius: 10px; border: none; width: 100%; background-color: orange;" >Trocar carro</button>
     </main>
 
     <footer>
@@ -163,6 +160,49 @@
  </footer>
 
  <script>
+    const troca = document.getElementById("troca");
+    let currentIndex = 0;
+
+    const vehiclesUser = <%- JSON.stringify(vehiclesUser) %>;
+    function updateVehicleData(index) {
+        const kmElement = document.querySelector('.cards.master .card-content p');
+        const batteryElement = document.querySelector('.cards:nth-of-type(2) .card-content p');
+        const gasElement = document.querySelector('.cards:nth-of-type(3) .card-content p');
+        const oilElement = document.querySelector('.cards:nth-of-type(4) .card-content p');
+        const waterElement = document.querySelector('.cards:nth-of-type(5) .card-content p');
+
+        kmElement.textContent = vehiclesUser[index].KMs + " KM";
+        
+        if (vehiclesUser[index].Battery >= 12.6) {
+            batteryElement.textContent = "COMPLETAMENTE SAUDÁVEL";
+        } else if (vehiclesUser[index].Battery >= 12.4) {
+            batteryElement.textContent = "SAUDÁVEL";
+        } else if (vehiclesUser[index].Battery >= 12.2) {
+            batteryElement.textContent = "ATENÇÃO, BATERIA BAIXA";
+        } else {
+            batteryElement.textContent = "BATERIA PRECISA SER SUBSTITUÍDA";
+        }
+
+        gasElement.textContent = vehiclesUser[index].Gas + "L";
+        
+        oilElement.textContent = vehiclesUser[index].Oil > 1.5 ? "NÍVEL OK" : "PRECISA REPOR";
+        
+        if (vehiclesUser[index].water > 2.5) {
+            waterElement.textContent = "NÍVEL ALTO";
+        } else if (vehiclesUser[index].water > 1.5) {
+            waterElement.textContent = "NÍVEL MÉDIO";
+        } else {
+            waterElement.textContent = "NÍVEL BAIXO";
+        }
+    }
+
+    troca.addEventListener("click", function() {
+        currentIndex = (currentIndex + 1) % vehiclesUser.length;
+        
+        updateVehicleData(currentIndex);
+    });
+
+
  </script>
 </body>
 </html>
