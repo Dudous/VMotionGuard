@@ -13,7 +13,7 @@
               alert('Código Incorreto');
           </script>
     </head>
-<body>
+<body onload="main(<%= code %>, <%= telefone %>)">
 
     <header>
         <a href="/recuperarSenha"><button type="submit" id="voltar" class="btn btn-primary button">Voltar</button></a>
@@ -28,6 +28,7 @@
         <form action="/codigoSenha/<%= id %>" method="post">
             <div class="code-container">
                 <input name="code" value="<%=code%>" hidden></p>
+                <input name="telefone" value="<%=telefone%>" hidden></p>
                 <input name="input1" type="text" class="code-input" maxlength="1" oninput="moveToNext(this, 'input2')" id="input1">
                 <input name="input2" type="text" class="code-input" maxlength="1" oninput="moveToNext(this, 'input3')" id="input2">
                 <input name="input3" type="text" class="code-input" maxlength="1" oninput="moveToNext(this, 'input4')" id="input3">

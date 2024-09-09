@@ -49,7 +49,7 @@ getToken().then(token => {
 const vehicleDataUrl = 'https://cluster.apigratis.com/api/v2/vehicles/dados';
 
 // Função para requisitar dados do veículo
-async function fetchVehicleData(token, plate) {
+async function fetchVehicleData(token) {
     
     try {
         const response = await fetch(vehicleDataUrl, {
