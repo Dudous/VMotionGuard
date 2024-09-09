@@ -23,15 +23,14 @@ route.get('/homePageAdmin/:id', read.home)
 route.post('homePageAdmin/:id', create.home)
 
 route.get('/userCars/:user', read.userCar); // abrir carros
-route.get('/car/:user/:id', read.vehicle); // abrir carro específico
-route.post('/carDelete/:user/:id', del.vehicle);
 
+route.get('/car/:user/:id', read.vehicle); // abrir carro específico
 route.post('/car/:id', create.vehicle);
 route.patch('/car/:id', update.vehicle);
+route.post('/carDelete/:user/:id', del.vehicle);
 
 route.get('/registerCar/:user', read.registerVehicle);
 route.post('/registerCar/:user', create.registerVehicle);
-
 
 route.get('/informacoesUsers/:id/:admin', read.editarUser)
 route.post('/informacoesUsers/:id/:admin', update.editarUser)
