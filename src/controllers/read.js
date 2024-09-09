@@ -59,11 +59,7 @@ module.exports = {
 
         const car = await vehicle.findOne({
             raw: true,
-            attributes: ['IDVehicle', 'Plate', 'Brand', 'Model', 'Year'],
-            include: [{model: carInfo,
-                required: false,
-                attributes: ['Latitude', 'Longitude', 'KMs', 'Gas', 'Oil', 'Temperature', 'Battery']
-            }],
+            attributes: ['IDVehicle', 'Plate', 'Brand', 'Model', 'Year', 'Latitude', 'Longitude', 'KMs', 'Gas', 'Oil', 'Temperature', 'Battery'],
             where: {IDVehicle : req.params.id}
         });
 

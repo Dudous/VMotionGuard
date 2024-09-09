@@ -104,7 +104,7 @@
 
                 </p>
             </div>
-            <button type="submit" class="details">detalhes</button>
+            <button type="submit" class="details" data-bs-toggle="modal" data-bs-target="#staticBackdrop" >Detalhes</button>
         </div>
 
         <div class="cards">
@@ -117,7 +117,7 @@
                   <%= vehiclesUser && vehiclesUser.length > 0 && vehiclesUser[0].Gas != undefined ? vehiclesUser[0].Gas + "L" : "AINDA NÃO HÁ DADOS" %> 
                 </p>
             </div>
-            <button type="submit" class="details">detalhes</button>
+             <button type="submit" class="details" data-bs-toggle="modal" data-bs-target="#staticBackdrop" >Detalhes</button>
         </div>
 
         <div class="cards">
@@ -133,7 +133,7 @@
                   %>
                 </p>
             </div>
-            <button type="submit" class="details">detalhes</button>
+             <button type="submit" class="details" data-bs-toggle="modal" data-bs-target="#staticBackdrop" >Detalhes</button>
         </div>
 
         <div class="cards">
@@ -150,10 +150,11 @@
                   %>
                 </p>
             </div>
-            <button type="submit" class="details">detalhes</button>
+             <button type="submit" class="details" data-bs-toggle="modal" data-bs-target="#staticBackdrop" >Detalhes</button>
         </div>
 
-        <button type="submit" id="troca" class="details" style="border-radius: 10px; border: none; width: 100%; background-color: orange;" >Trocar carro</button>
+        <button type="submit" id="troca" class="troca">Trocar carro</button>
+        <button class="troca" id="carro"><%= vehiclesUser[0].Model %> n°: 1 </button>
     </main>
 
     <footer>
@@ -174,6 +175,7 @@
         const gasElement = document.querySelector('.cards:nth-of-type(3) .card-content p');
         const oilElement = document.querySelector('.cards:nth-of-type(4) .card-content p');
         const waterElement = document.querySelector('.cards:nth-of-type(5) .card-content p');
+        const carro = document.getElementById("carro");
 
         kmElement.textContent = vehiclesUser && vehiclesUser[index].KMs != null ? vehiclesUser[index].KMs + ' KM' : "AINDA NÃO HÁ DADOS" ;
     
@@ -198,10 +200,9 @@
         currentIndex = (currentIndex + 1) % vehiclesUser.length;
         
         updateVehicleData(currentIndex);
-        console.log(currentIndex)
+        carro.textContent = vehiclesUser[currentIndex].Model + " n°" + (currentIndex + 1);
+        
     });
-
-    // console.log(<%=//JSON.stringify(vehiclesUser)%>)
 
  </script>
 </body>

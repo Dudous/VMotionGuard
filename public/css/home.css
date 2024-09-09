@@ -8,7 +8,9 @@ html, body {
 
 body {
     background-color: #252525 !important;
-    font-family: "Roboto", system-ui;
+    font-family: "Roboto", sans-serif;
+    font-weight: 900;
+    font-style: normal;
     font-weight: 400;
     font-style: normal;
     display: flex;
@@ -84,7 +86,7 @@ header {
 }
 
 .details:hover {
-    background-color: rgb(146, 96, 5);
+    box-shadow: 0 0 14px rgba(60, 59, 59, 0.416);
 }
 
 main {
@@ -131,6 +133,9 @@ header img {
     box-sizing: border-box;
     padding-top: 10px;
 }
+.cards:hover{
+    box-shadow: 0 0 4px white;
+}
 
 .card-header {
     display: flex;
@@ -176,10 +181,22 @@ header img {
     bottom: 10px;
     left: 50%;
     transform: translateX(-50%);
+    text-shadow: 0 0 10px white;
 }
 
 .icon {
     max-width: 30px;
+}
+.troca
+{
+    border-radius: 10px; 
+    border: none; width: 100%; 
+    background-color: orange;
+    text-shadow: 0 0 10px white;
+}
+.troca:hover{
+    border: solid 0.9px white;
+    box-shadow: 0 0 9px rgba(255, 255, 255, 0.416);
 }
 
 footer {
