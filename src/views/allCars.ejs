@@ -46,12 +46,12 @@
     </header>
     <main id="userList">
 
-        <% for(let i = 0; i < vehicles.length; i++) {
+        <% for(let i = 0; i < vehicles.length; i++) { %>
 
                  <div class="cards-admin">
                      <div class="card-header">
                          <img class="icon" src="/img/car.png" alt="">
-                         <h1 style="margin: 7px;"> <%= results[i][j].Model%></h1>
+                         <h1 style="margin: 7px;"> <%= vehicles[i].Model%></h1>
                      </div>
                          <div class="card-content">
                              <h1> Placa: <%= vehicles[i].Plate %></h1>

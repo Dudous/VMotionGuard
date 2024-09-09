@@ -120,7 +120,7 @@ module.exports = {
         //     console.log( 'resultado 1' + JSON.stringify(results[0][1]))
             
 
-        res.render('../views/allCars', {vehicles, users, results, id});
+        res.render('../views/allCars', {vehicles, users, id});
     },
 
     async userCar(req, res){
@@ -144,7 +144,7 @@ module.exports = {
 
         const currentUser = await user.findOne({
             raw: true,
-            attributes: ['IDUser', 'Name', 'CPF', 'Email', 'Password', 'IsAdmin'],
+            attributes: ['IDUser', 'Name', 'CPF', 'Email', 'Telefone', 'Password', 'IsAdmin'],
             where: {IDUser : id}
         })
        

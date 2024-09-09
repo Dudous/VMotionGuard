@@ -58,6 +58,7 @@ module.exports = {
             await user.update({
                 Name: data.userName,
                 Email: data.userEmail, 
+                Telefone: data.userTelefone.replace(/\D/g, ''),
                 Password: data.userPassword
             },
             {
