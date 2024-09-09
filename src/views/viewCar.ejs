@@ -115,11 +115,11 @@
                 <p><strong>Modelo:</strong> <%= car.Model %></p>
                 <p><strong>Placa:</strong> <%= car.Plate %></p>
                 <p><strong>Ano:</strong> <%= car.Year %></p>
-                <p><strong>Quilometragem:</strong> <%= car['CarInfo.Kms'] %></p>
-                <p><strong>Gasolina (Litros):</strong> <%= car['CarInfo.Gas'] %></p>
-                <p><strong>Nível de Óleo:</strong> <%= car['CarInfo.Oil'] ? 'Ok': 'Baixo' %></p>
-                <p><strong>Temperatura:</strong> <%= car['CarInfo.Temperature'] %>°</p>
-                <p><strong>Bateria:</strong> <%= car['CarInfo.Battery'] %></p>
+                <p><strong>Quilometragem:</strong> <%= car.Kms %></p>
+                <p><strong>Gasolina (Litros):</strong> <%= car.Gas %></p>
+                <p><strong>Nível de Óleo:</strong> <%= car.Oil ? 'Ok': 'Baixo' %></p>
+                <p><strong>Temperatura:</strong> <%= car.Temperature %>°</p>
+                <p><strong>Bateria:</strong> <%= car.Battery %></p>
             </div>
         
             <!-- <button data-toggle="modal" data-target="#modalEdit" data-id="<%= car.IDUser %>">
