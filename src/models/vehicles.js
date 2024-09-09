@@ -3,7 +3,6 @@ const Sequelize = require('sequelize');
 const database = require('../config/db');
 
 const users = require('./users');
-const carInfo = require('./carInfo');
 
 // Criando a tabela Sala
 const vehicles = database.define('Vehicle', {

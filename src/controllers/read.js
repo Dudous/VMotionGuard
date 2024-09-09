@@ -20,7 +20,8 @@ module.exports = {
             attributes: ['IDVehicle', 'Plate', 'Brand', 'Model', 'Year', 'IDUser', 'Latitude', 'Longitude', 'KMs', 'Gas', 'Oil', 'Temperature', 'Battery', 'water'],
             where: {IDUser: id}})
 
-            // vehiclesUser = JSON.stringify(vehiclesUser);
+        // vehiclesUser = JSON.stringify(vehiclesUser)
+        // console.log(vehiclesUser)
             
         const vehicles = await vehicle.findAll({
             raw: true,
