@@ -80,7 +80,7 @@
             </div>
             <div class="card-content">
                 <p> 
-                  <%= vehiclesUser && vehiclesUser[0].KMs != null ? vehiclesUser[0].KMs + ' KM' : "AINDA NÃO HÁ DADOS" %> 
+                  <%= vehiclesUser.length != 0? vehiclesUser[0].KMs != null ? vehiclesUser[0].KMs + ' KM' : "AINDA NÃO HÁ DADOS": "AINDA NÃO HÁ DADOS" %> 
                 </p>
             </div>
         </div>
@@ -127,9 +127,9 @@
             </div>
             <div class="card-content">
                 <p>
-                  <%= vehiclesUser && vehiclesUser.length > 0 && vehiclesUser[0].Oil != undefined ? 
-                      vehiclesUser[0].Oil > 1.5 ? "NÍVEL OK" : "PRECISA REPOR" 
-                      : "AINDA NÃO HÁ DADOS" 
+                  <%=vehiclesUser && vehiclesUser.length > 0 && vehiclesUser[0].Oil != undefined ? 
+                     vehiclesUser[0].Oil > 1.5 ? "NÍVEL OK" : "PRECISA REPOR" 
+                     : "AINDA NÃO HÁ DADOS" 
                   %>
                 </p>
             </div>
@@ -154,7 +154,7 @@
         </div>
 
         <button type="submit" id="troca" class="troca">Trocar carro</button>
-        <button class="troca" id="carro"><%= vehiclesUser[0].Model %> n°: 1 </button>
+        <button class="troca" id="carro"><%= //vehiclesUser[0].Model %> n°: 1 </button>
     </main>
 
     <footer>
@@ -169,6 +169,7 @@
     let currentIndex = 0;
 
     const vehiclesUser = <%- JSON.stringify(vehiclesUser) %>;
+    // alert(vehiclesUser.length != 0? "é zero": "nn é")
     function updateVehicleData(index) {
         const kmElement = document.querySelector('.cards.master .card-content p');
         const batteryElement = document.querySelector('.cards:nth-of-type(2) .card-content p');
