@@ -4,6 +4,7 @@ function validateForm() {
     const cpf = document.getElementById("userCPF")
     const password = document.getElementById("userPassword");
     const passwordConfirm = document.getElementById("userPasswordConfirm");
+    const tel = document.getElementById("userTel")
     
     if(email.value != emailConfirm.value)
         {
@@ -43,3 +44,15 @@ function formatCPF(cpfField) {
 
     cpfField.value = formattedCPF; 
 }
+
+function formatPhone(input) {
+    let phone = input.value.replace(/\D/g, ''); // Remove tudo que não for número
+
+    if (phone.length <= 13) { 
+      const formatted = phone.replace(/^(\d{2})(\d{2})(\d{5})(\d{4})$/, '+$1 ($2) $3-$4');
+      input.value = formatted;
+    } else {
+      input.value = input.value.slice(0, input.maxLength); 
+    }
+  }
+
