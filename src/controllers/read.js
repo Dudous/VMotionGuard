@@ -46,9 +46,7 @@ module.exports = {
     
     async registerUser(req, res){
 
-        const cpfExiste = null;
-    
-        res.render('../views/registerUser', {cpfExiste});
+        res.render('../views/registerUser', {erro: null});
     },
     
     async vehicle(req, res){

@@ -81,9 +81,7 @@ module.exports = {
     async user(req, res){
 
         const data = req.body;
-        console.log(data)
         const cpf = data.CPF.replace(/[-.]/g, '');
-        console.log(typeof(data.userPassword));
 
         const cpfExiste = await user.findOne({
             where: { CPF: cpf },
@@ -91,10 +89,20 @@ module.exports = {
             attributes: ['IDUser', 'CPF', 'Name', 'Email', 'Password', 'IsAdmin']
         });
 
+        let somaCpf = 0
+
+        cpf.split().forEach(digit => {
+            somaCpf += parseInt(digit, 10)
+        });
+
+        console.log(somaCpf)
+
+        if(!somaCpf % 11)
+            return res.render('../views/registerUser', {erro: "CPF Inválido"});
+
         if(cpfExiste)
         {
-            const cpfExiste = "O cpf já existe, por favor faça login"
-            return res.render('../views/registerUser', {cpfExiste});
+            return res.render('../views/registerUser', {erro: "O cpf já existe, por favor faça login"});
         }
         else{
 

@@ -11,9 +11,9 @@
 </head>
 <body>
 
-  <%if (cpfExiste) { %>
+  <%if (erro) { %>
     <script>
-        alert("O cpf já existe! por favor faça login");
+        alert('<%= erro %>');
     </script>
   <%} %>
 
