@@ -1,7 +1,5 @@
 const vehicle = require('../models/vehicles');
 const user = require('../models/users');
-const DataBase = require('../config/db');
-const carInfo = require('../models/carInfo');
 const { Op } = require('sequelize');
 
 module.exports = {

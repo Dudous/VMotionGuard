@@ -1,8 +1,39 @@
+use VmotionDB;
+go;
+drop table vehicles;
+drop table users;
+go;
+
+INSERT INTO Users (CPF, Name, Telefone, Email, Password, IsAdmin, createdAt, updatedAt)
+VALUES 
+('09876543211', 'Manuel Gomes', '5541999999999', 'manuel.gomes@gmail.com', '123', 1, SYSDATETIMEOFFSET(), SYSDATETIMEOFFSET()), -- admin
+('12345678901', 'João Silva', '123456789', 'joao@example.com', 'senha123', 0, SYSDATETIMEOFFSET(), SYSDATETIMEOFFSET()),
+('23456789012', 'Maria Souza', '987654321', 'maria@example.com', 'senha123', 0, SYSDATETIMEOFFSET(), SYSDATETIMEOFFSET()),
+('34567890123', 'Carlos Pereira', '111111111', 'carlos@example.com', 'senha123', 0, SYSDATETIMEOFFSET(), SYSDATETIMEOFFSET()),
+('45678901234', 'Ana Oliveira', '222222222', 'ana@example.com', 'senha123', 0, SYSDATETIMEOFFSET(), SYSDATETIMEOFFSET()),
+('56789012345', 'Lucas Mendes', '333333333', 'lucas@example.com', 'senha123', 0, SYSDATETIMEOFFSET(), SYSDATETIMEOFFSET()),
+('67890123456', 'Beatriz Lima', '444444444', 'beatriz@example.com', 'senha123', 0, SYSDATETIMEOFFSET(), SYSDATETIMEOFFSET()),
+('78901234567', 'Rodrigo Almeida', '555555555', 'rodrigo@example.com', 'senha123', 0, SYSDATETIMEOFFSET(), SYSDATETIMEOFFSET()),
+('89012345678', 'Juliana Costa', '666666666', 'juliana@example.com', 'senha123', 0, SYSDATETIMEOFFSET(), SYSDATETIMEOFFSET()),
+('90123456789', 'Fernando Moreira', '777777777', 'fernando@example.com', 'senha123', 0, SYSDATETIMEOFFSET(), SYSDATETIMEOFFSET()),
+('01234567890', 'Gabriela Ribeiro', '888888888', 'gabriela@example.com', 'senha123', 0, SYSDATETIMEOFFSET(), SYSDATETIMEOFFSET());
+
+-- veiculos
 INSERT INTO Vehicles (Plate, Brand, Model, Year, Latitude, Longitude, KMs, Gas, Oil, Temperature, Battery, Water, CreatedAt, UpdatedAt, IDUser)
 VALUES 
-('AAA1111', 'Volkswagen', 'Gol', 2020, '-30.0346', '-51.2177', 15000, 20.0, 1, 90, '12.7', '3.0', SYSDATETIMEOFFSET(), SYSDATETIMEOFFSET(), 1),  -- Porto Alegre, RS
-('BBB2222', 'Ford', 'Fiesta', 2018, '-25.4284', '-49.2733', 20000, 15.0, 0, 85, '12.3', '2.0', SYSDATETIMEOFFSET(), SYSDATETIMEOFFSET(), 1),  -- Curitiba, PR
-('CCC3333', 'Chevrolet', 'Onix', 2019, '-19.9167', '-43.9345', 10000, 10.0, 1, 92, '12.5', '1.5', SYSDATETIMEOFFSET(), SYSDATETIMEOFFSET(), 1),  -- Belo Horizonte, MG
-('DDD4444', 'Hyundai', 'HB20', 2021, '-8.0476', '-34.8770', 5000, 5.0, 0, 95, '12.1', '1.0', SYSDATETIMEOFFSET(), SYSDATETIMEOFFSET(), 1),  -- Recife, PE
-('EEE5555', 'Toyota', 'Corolla', 2022, '-3.1190', '-60.0217', 25000, 8.0, 1, 88, '12.0', '2.5', SYSDATETIMEOFFSET(), SYSDATETIMEOFFSET(), 1),  -- Manaus, AM
-('FFF6666', 'Honda', 'Civic', 2023, '-12.9714', '-38.5014', 12000, 12.0, 0, 87, '11.9', '1.2', SYSDATETIMEOFFSET(), SYSDATETIMEOFFSET(), 1);  -- Salvador, BA
+('AAA1111', 'Volkswagen', 'Gol', 2020, '-30.0346', '-51.2177', 15000, 20.0, 1, 90, '12.7', '3.0', SYSDATETIMEOFFSET(), SYSDATETIMEOFFSET(), 2),  -- Porto Alegre, RS
+('BBB2222', 'Ford', 'Fiesta', 2018, '-25.4284', '-49.2733', 20000, 15.0, 0, 85, '12.3', '2.0', SYSDATETIMEOFFSET(), SYSDATETIMEOFFSET(), 3),  -- Curitiba, PR
+('CCC3333', 'Chevrolet', 'Onix', 2019, '-19.9167', '-43.9345', 10000, 10.0, 1, 92, '12.5', '1.5', SYSDATETIMEOFFSET(), SYSDATETIMEOFFSET(), 4),  -- Belo Horizonte, MG
+('DDD4444', 'Hyundai', 'HB20', 2021, '-8.0476', '-34.8770', 5000, 5.0, 0, 95, '12.1', '1.0', SYSDATETIMEOFFSET(), SYSDATETIMEOFFSET(), 5),  -- Recife, PE
+('EEE5555', 'Toyota', 'Corolla', 2022, '-3.1190', '-60.0217', 25000, 8.0, 1, 88, '12.0', '2.5', SYSDATETIMEOFFSET(), SYSDATETIMEOFFSET(), 6),  -- Manaus, AM
+('FFF6666', 'Honda', 'Civic', 2023, '-12.9714', '-38.5014', 12000, 12.0, 0, 87, '11.9', '1.2', SYSDATETIMEOFFSET(), SYSDATETIMEOFFSET(), 7),  -- Salvador, BA
+('GGG7777', 'Nissan', 'Kicks', 2020, '-22.9068', '-43.1729', 18000, 18.0, 1, 89, '12.8', '2.1', SYSDATETIMEOFFSET(), SYSDATETIMEOFFSET(), 8),  -- Rio de Janeiro, RJ
+('HHH8888', 'Jeep', 'Renegade', 2019, '-15.7801', '-47.9292', 22000, 14.0, 0, 86, '12.6', '1.8', SYSDATETIMEOFFSET(), SYSDATETIMEOFFSET(), 9),  -- Brasília, DF
+('III9999', 'Renault', 'Duster', 2021, '-23.5505', '-46.6333', 9000, 7.0, 1, 91, '12.9', '1.4', SYSDATETIMEOFFSET(), SYSDATETIMEOFFSET(), 10),  -- São Paulo, SP
+('JJJ0000', 'Peugeot', '208', 2022, '-16.6869', '-49.2643', 14000, 11.0, 0, 83, '12.4', '1.9', SYSDATETIMEOFFSET(), SYSDATETIMEOFFSET(), 11),  -- Goiânia, GO
+('KKK1111', 'Fiat', 'Argo', 2021, '-19.9167', '-43.9345', 17000, 13.0, 1, 94, '12.2', '1.7', SYSDATETIMEOFFSET(), SYSDATETIMEOFFSET(), 2),  -- Belo Horizonte, MG
+('LLL2222', 'Chevrolet', 'S10', 2020, '-8.0476', '-34.8770', 23000, 16.0, 0, 89, '11.8', '1.5', SYSDATETIMEOFFSET(), SYSDATETIMEOFFSET(), 3),  -- Recife, PE
+('MMM3333', 'Volkswagen', 'Virtus', 2023, '-12.9714', '-38.5014', 6000, 9.0, 1, 88, '11.9', '1.3', SYSDATETIMEOFFSET(), SYSDATETIMEOFFSET(), 4) -- Salvador, BA
+
+select * from users;
+

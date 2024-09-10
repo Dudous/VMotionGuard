@@ -4,7 +4,6 @@ const database = require('../config/db');
 
 const users = require('./users');
 
-// Criando a tabela Sala
 const vehicles = database.define('Vehicle', {
     IDVehicle: {
         type: Sequelize.INTEGER,

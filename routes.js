@@ -2,7 +2,6 @@
 const express = require('express');
 const route = express.Router();
 
-const map = require('./src/controllers/map');
 const create = require('./src/controllers/create');
 const del = require('./src/controllers/delete');
 const read = require('./src/controllers/read');
