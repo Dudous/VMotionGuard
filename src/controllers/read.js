@@ -80,7 +80,7 @@ module.exports = {
 
         const currentUser = await user.findOne({
             raw: true,
-            attributes: ['IDUser', 'Name', 'CPF', 'Email', 'Password', 'IsAdmin'],
+            attributes: ['IDUser', 'Name', 'CPF', 'Email', 'Telefone', 'Password', 'IsAdmin'],
             where: {IDUser : id}
         })
        
@@ -98,28 +98,7 @@ module.exports = {
         const users = await user.findAll({
             raw: true,
             attributes: ['IDUser', 'Name', 'CPF', 'Email', 'Password', 'IsAdmin']})
-
-        // const results = await DataBase.query(`
-        //     SELECT
-        //     u.IDUser,
-        //     u.Name,
-        //     u.Email,
-        //     u.CPF,
-        //     v.IDVehicle,
-        //     v.Plate,
-        //     v.Brand,
-        //     v.Model,
-        //     v.Year
-        //     FROM 
-        //     users as u
-        //     inner join vehicles as v
-        //     ON u.IDUser = v.IDUser;
-        //     `, {type: DataBase.SELECT, raw: true});
-
-        //     console.log(results)
-        //     console.log( 'resultado 1' + JSON.stringify(results[0][1]))
             
-
         res.render('../views/allCars', {vehicles, users, id});
     },
 
@@ -129,7 +108,7 @@ module.exports = {
 
         const vehicles = await vehicle.findAll({
             raw: true,
-            attributes: ['IDVehicle', 'Plate', 'Brand', 'Model', 'Year', 'IDUser'],
+            attributes: ['IDVehicle', 'Plate', 'Brand', 'KMs', 'Model', 'Year', 'IDUser'],
             where: {IDUser: idUser}
         });
 

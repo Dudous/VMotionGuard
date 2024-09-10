@@ -21,7 +21,7 @@ module.exports = {
                 return
             }
             
-        let telefone = '55' + finduser.Telefone.replace(' ', '')
+        let telefone = finduser.Telefone
 
         const code = Math.round(Math.random() * (9999 - 1111) + 1111);
 

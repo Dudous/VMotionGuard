@@ -1,8 +1,8 @@
-INSERT INTO Vehicles (Plate, Brand, Model, Year, Latitude, Longitude, KMs, Gas, Oil, Temperature, Battery, water, CreatedAt, UpdatedAt, IDUser)
+INSERT INTO Vehicles (Plate, Brand, Model, Year, Latitude, Longitude, KMs, Gas, Oil, Temperature, Battery, Water, CreatedAt, UpdatedAt, IDUser)
 VALUES 
-('AAA1111', 'Volkswagen', 'Gol', 2020, '-23.5505', '-46.6333', 15000, 20.0, 1, 90, '12.7', '3.0', SYSDATETIMEOFFSET(), SYSDATETIMEOFFSET(), 1),
-('BBB2222', 'Ford', 'Fiesta', 2018, '-23.5505', '-46.6333', 20000, 15.0, 0, 85, '12.3', '2.0', SYSDATETIMEOFFSET(), SYSDATETIMEOFFSET(), 1),
-('CCC3333', 'Chevrolet', 'Onix', 2019, '-23.5505', '-46.6333', 10000, 10.0, 1, 92, '12.5', '1.5', SYSDATETIMEOFFSET(), SYSDATETIMEOFFSET(), 1),
-('DDD4444', 'Hyundai', 'HB20', 2021, '-23.5505', '-46.6333', 5000, 5.0, 0, 95, '12.1', '1.0', SYSDATETIMEOFFSET(), SYSDATETIMEOFFSET(), 1),
-('EEE5555', 'Toyota', 'Corolla', 2022, '-23.5505', '-46.6333', 25000, 8.0, 1, 88, '12.0', '2.5', SYSDATETIMEOFFSET(), SYSDATETIMEOFFSET(), 1),
-('FFF6666', 'Honda', 'Civic', 2023, '-23.5505', '-46.6333', 12000, 12.0, 0, 87, '11.9', '1.2', SYSDATETIMEOFFSET(), SYSDATETIMEOFFSET(), 1);
+('AAA1111', 'Volkswagen', 'Gol', 2020, '-30.0346', '-51.2177', 15000, 20.0, 1, 90, '12.7', '3.0', SYSDATETIMEOFFSET(), SYSDATETIMEOFFSET(), 1),  -- Porto Alegre, RS
+('BBB2222', 'Ford', 'Fiesta', 2018, '-25.4284', '-49.2733', 20000, 15.0, 0, 85, '12.3', '2.0', SYSDATETIMEOFFSET(), SYSDATETIMEOFFSET(), 1),  -- Curitiba, PR
+('CCC3333', 'Chevrolet', 'Onix', 2019, '-19.9167', '-43.9345', 10000, 10.0, 1, 92, '12.5', '1.5', SYSDATETIMEOFFSET(), SYSDATETIMEOFFSET(), 1),  -- Belo Horizonte, MG
+('DDD4444', 'Hyundai', 'HB20', 2021, '-8.0476', '-34.8770', 5000, 5.0, 0, 95, '12.1', '1.0', SYSDATETIMEOFFSET(), SYSDATETIMEOFFSET(), 1),  -- Recife, PE
+('EEE5555', 'Toyota', 'Corolla', 2022, '-3.1190', '-60.0217', 25000, 8.0, 1, 88, '12.0', '2.5', SYSDATETIMEOFFSET(), SYSDATETIMEOFFSET(), 1),  -- Manaus, AM
+('FFF6666', 'Honda', 'Civic', 2023, '-12.9714', '-38.5014', 12000, 12.0, 0, 87, '11.9', '1.2', SYSDATETIMEOFFSET(), SYSDATETIMEOFFSET(), 1);  -- Salvador, BA

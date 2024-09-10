@@ -55,6 +55,12 @@
                 </div>
 
                 <div class="col-12">
+                    <label for="inputAddress" class="form-label">Telefone</label>
+                    <input type="text" class="form-control" id="userTel" value="<%=currentUser.Telefone %>"  readonly >
+                  </div>
+
+
+                <div class="col-12">
                     <label for="inputAddress" class="form-label">Permissão</label>
                     <input type="text" class="form-control" id="userAllow" name="userAllow" value="<%= currentUser.IsAdmin == 1? "Administrador" : "Usuário" %>" readonly >
                 </div>

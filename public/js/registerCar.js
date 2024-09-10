@@ -75,11 +75,11 @@ async function fetchVehicleData(token) {
 }
 
 // Função principal para autenticar e obter dados do veículo
-// async function main() {
-//     const token = await getToken();
-//     if (token) {
-//         await fetchVehicleData(token);
-//     }
-// }
+async function main() {
+    const token = await getToken();
+    if (token) {
+        await fetchVehicleData(token);
+    }
+}
 
 
