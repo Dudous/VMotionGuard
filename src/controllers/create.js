@@ -89,15 +89,18 @@ module.exports = {
             attributes: ['IDUser', 'CPF', 'Name', 'Email', 'Password', 'IsAdmin']
         });
 
+        let validcpf = cpf
         let somaCpf = 0
 
-        cpf.split().forEach(digit => {
-            somaCpf += parseInt(digit, 10)
-        });
+        validcpf = parseInt(cpf, 10)
 
-        console.log(somaCpf)
+        while(validcpf > 0)
+        {
+            somaCpf += validcpf % 10
+            validcpf /= 10
+        }
 
-        if(!somaCpf % 11)
+        if(somaCpf % 11)
             return res.render('../views/registerUser', {erro: "CPF Inválido"});
 
         if(cpfExiste)
