@@ -94,11 +94,18 @@ module.exports = {
 
         validcpf = parseInt(cpf, 10)
 
-        while(validcpf > 0)
+        console.log(validcpf)
+
+        while(validcpf >=
+             1)
         {
             somaCpf += validcpf % 10
-            validcpf /= 10
+            validcpf = parseInt(validcpf/ 10)
+            console.log(validcpf)
         }
+
+        console.log(somaCpf)
+
 
         if(somaCpf % 11)
             return res.render('../views/registerUser', {erro: "CPF Inválido"});
