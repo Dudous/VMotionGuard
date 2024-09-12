@@ -4,6 +4,52 @@ const Log = require('../models/log')
 const tel = require('../models/telefone')
 const { createHmac } = require('node:crypto');
 
+function validCPF(cpf)
+{
+    console.log(cpf)
+    let somaCpf = 0
+
+    for (let i = 0; i < 9; i++) {
+        somaCpf += (cpf[i] * (i + 1))
+    }
+    
+    console.log(somaCpf)
+    
+    if(somaCpf % 11 != cpf[9] || (somaCpf % 11 == 10 && cpf[9] == 0))
+        return false
+
+    console.log('primeira validação')
+    
+    somaCpf = 0;
+    
+    for (let i = 0; i < 10; i++) {
+        somaCpf += (cpf[i] * i)
+        console.log(cpf[i])
+    }
+    console.log(somaCpf)
+    console.log(cpf[10], somaCpf %11)
+    
+    if(somaCpf % 11 != cpf[10] || (somaCpf % 11 == 10 && cpf[10] == 0))
+        return false;
+
+    console.log('segunda validação')
+
+    console.log(somaCpf)
+
+    somaCpf = 0
+
+    for (let i = 0; i < 11; i++) {
+        somaCpf += parseInt(cpf[i]);
+    }
+
+    console.log(somaCpf)
+
+    if(somaCpf % 11)
+        return false;
+    else
+        return true;
+}
+
 module.exports = {
 
     async login(req, res) {
@@ -99,25 +145,7 @@ module.exports = {
             attributes: ['IDUser', 'CPF', 'Name', 'Email', 'Password', 'IsAdmin']
         });
 
-        let validcpf = cpf
-        let somaCpf = 0
-
-        validcpf = parseInt(cpf, 10)
-
-        console.log(validcpf)
-
-        while(validcpf >=
-             1)
-        {
-            somaCpf += validcpf % 10
-            validcpf = parseInt(validcpf/ 10)
-            console.log(validcpf)
-        }
-
-        console.log(somaCpf)
-
-
-        if(somaCpf % 11)
+        if(!validCPF(cpf))
             return res.render('../views/registerUser', {erro: "CPF Inválido"});
 
         if(cpfExiste)
