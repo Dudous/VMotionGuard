@@ -1,5 +1,6 @@
 const vehicle = require('../models/vehicles')
 const user = require('../models/users')
+const Log = require('../models/log')
 
 module.exports = {
     async vehicle(req, res){
@@ -14,6 +15,10 @@ module.exports = {
         },
         {
             where: { IDVehicle: req.params.id }
+        });
+
+        await Log.create({
+            msg: `Veículo ID ${req.params.vehicleId} foi atualizado. Nova placa: ${data.plate}, modelo: ${data.model}, marca: ${data.brand}, ano: ${data.year}.`
         });
 
         res.redirect('/');
@@ -43,6 +48,10 @@ module.exports = {
                 where: { IDUser: req.params.id }
             });
 
+            await Log.create({
+                msg: `O status de administrador do usuário ID ${req.params.id} foi atualizado para Admin.`
+            });
+
         }
 
 
@@ -63,6 +72,10 @@ module.exports = {
             },
             {
                 where: { IDUser: id }
+            });
+
+            await Log.create({
+                msg: `As informações do usuário ID ${id} foram atualizadas. Nome: ${data.userName}, Email: ${data.userEmail}, Telefone: ${data.userTelefone.replace(/\D/g, '')}.`
             });
 
             const currentUser = await user.findOne({

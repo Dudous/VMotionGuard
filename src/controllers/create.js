@@ -1,5 +1,6 @@
 const vehicle = require('../models/vehicles')
 const user = require('../models/users');
+const Log = require('../models/log')
 const { createHmac } = require('node:crypto');
 
 module.exports = {
@@ -60,6 +61,10 @@ module.exports = {
         IDInfo: 1
         });
 
+        await Log.create({
+            msg: `novo veiculo criado`
+        });
+
         res.redirect('/');
     },
 
@@ -73,6 +78,10 @@ module.exports = {
         Model: data.model,
         Year: data.year,
         IDUser: req.params.user
+        });
+
+        await Log.create({
+            msg: `Veículo com placa ${data.plate}, modelo ${data.model}, marca ${data.brand} foi cadastrado para o usuário ${req.params.user}.`
         });
 
         res.redirect('/userCars/'+ req.params.user);
@@ -125,6 +134,10 @@ module.exports = {
                 Email: data.email,
                 Password: cryptoPass,
                 IsAdmin: 0
+            });
+
+            await Log.create({
+                msg: `novo usuário criado`
             });
     
             res.redirect('/')
