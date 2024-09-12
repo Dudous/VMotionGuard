@@ -1,6 +1,7 @@
 const vehicle = require('../models/vehicles')
 const user = require('../models/users');
 const Log = require('../models/log')
+const tel = require('../models/telefone')
 const { createHmac } = require('node:crypto');
 
 module.exports = {
@@ -138,6 +139,17 @@ module.exports = {
 
             await Log.create({
                 msg: `novo usuário criado`
+            });
+
+            const userInserted = await user.findOne({
+                where: { CPF: data.CPF.replace(/[-.]/g, '') },
+                raw: true, 
+                attributes: ['IDUser']
+            });
+
+            await tel.create({
+                Telefone: data.telefone.replace(/\D/g, ''),
+                IDUser: userInserted.IDUser
             });
     
             res.redirect('/')

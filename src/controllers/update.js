@@ -1,6 +1,7 @@
 const vehicle = require('../models/vehicles')
 const user = require('../models/users')
 const Log = require('../models/log')
+const tel = require('../models/telefone')
 
 module.exports = {
     async vehicle(req, res){
@@ -78,11 +79,20 @@ module.exports = {
                 msg: `As informações do usuário ID ${id} foram atualizadas. Nome: ${data.userName}, Email: ${data.userEmail}, Telefone: ${data.userTelefone.replace(/\D/g, '')}.`
             });
 
+            await tel.update(
+                {Telefone: data.userTelefone.replace(/\D/g, '')},
+                {
+                    where: { IDUser: id }
+                });
+
+          
             const currentUser = await user.findOne({
                 raw: true,
                 attributes: ['IDUser', 'Name', 'CPF', 'Email', 'Password', 'IsAdmin'],
                 where: {IDUser : id}
             })
+
+            console.log(id)
 
             if(currentUser.IsAdmin == 1)
                 {
