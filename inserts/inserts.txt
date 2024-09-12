@@ -5,6 +5,7 @@ drop table users;
 go;
 
 -- ai que sla oq
+-- ai que sla oq
 
 INSERT INTO Users (CPF, Name, Telefone, Email, Password, IsAdmin, createdAt, updatedAt)
 VALUES 
